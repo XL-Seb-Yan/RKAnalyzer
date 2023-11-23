@@ -1,0 +1,1101 @@
+Singletons:
+  filePrepend        : 
+                     - String to prepend location of all files
+  globalTag          : NOTSET
+                     - Set global tag
+  isMC               : True
+                     - Run this on real data
+  lhcRun             : 3
+                     - LHC Run 2 or 3 (default)
+  maxEvents          : -1
+                     - Number of events to process (-1 for all)
+  outputFile         : output.root
+                     - Name of output file (if needed)
+  reportEvery        : 10000
+                     - report every N events
+  secondaryOutputFile: 
+                     - Name of second output file (if needed)
+  section            : 0
+                     - This section (from 1..totalSections inclusive)
+  skip               : 0
+                     - skip first N events
+  storePrepend       : 
+                     - Prepend location of files starting with '/store'
+  tag                : 124X
+                     - tag to add to output filename
+  totalSections      : 0
+                     - Total number of sections
+  wantFullRECO       : False
+                     - Run this on real data
+  wantSummary        : True
+                     - Run this on real data
+Lists:
+  inputFiles         : ['/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root',
+                        '/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root',
+                        '/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root',
+                        '/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root',
+                        '/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root' ]
+                     - Files to process
+  secondaryInputFiles: []
+                     - Second group of files to process (if needed)
+
+22-Nov-2023 17:09:27 CET  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 17:09:29 CET pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root?xrdcl.requuid=9d1fe503-88d2-451b-9c9e-a68f891ab1cf.
+%MSG
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 17:09:29 CET pre-events
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root?tried=&xrdcl.requuid=545e951a-921c-40c3-88ee-3111db414330.
+%MSG
+22-Nov-2023 17:09:29 CET  Initiating request to open file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root
+%MSG-w XrdAdaptor:  file_open 22-Nov-2023 17:09:31 CET pre-events
+Data is served from grid.hep.ph.ic.ac.uk instead of original site infn.it
+%MSG
+22-Nov-2023 17:09:39 CET  Successfully opened file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root
+type = ProbeTracks
+type = Electron
+%MSG-w LogicError:  GenWeightsTableProducer:genWeightsTable@beginRun  22-Nov-2023 17:09:48 CET Run: 1
+::getByLabel: An attempt was made to read a Run product before endRun() was called.
+The product is of type 'LHERunInfoProduct'.
+The specified ModuleLabel was 'externalLHEProducer'.
+The specified productInstanceName was ''.
+
+%MSG
+%MSG-w LogicError:  GenWeightsTableProducer:genWeightsTable@beginRun  22-Nov-2023 17:09:48 CET Run: 1
+::getByLabel: An attempt was made to read a Run product before endRun() was called.
+The product is of type 'LHERunInfoProduct'.
+The specified ModuleLabel was 'source'.
+The specified productInstanceName was ''.
+
+%MSG
+Begin processing the 1st record. Run 1, Event 528368, LumiSection 15 on stream 0 at 22-Nov-2023 17:09:49.165 CET
+%MSG-w XrdAdaptor:  (NoModuleName) 22-Nov-2023 17:09:49 CET pre-events
+Data is now served from grid.hep.ph.ic.ac.uk, T2_US_MIT instead of previous grid.hep.ph.ic.ac.uk
+%MSG
+Rivet.AnalysisHandler: INFO  Using named weights
+PersistencyIO    INFO  +++ Set Streamer to dd4hep::OpaqueDataBlock
+DD4hep           WARN  ++ Using globally Geant4 unit system (mm,ns,MeV)
+DD4CMS           INFO  +++ Processing the CMS detector description xml-memory-buffer
+Detector         INFO  *********** Created World volume with size: 101000 101000 450000
+Detector         INFO  +++ Patching names of anonymous shapes....
+DDDefinition     INFO  +++ Finished processing xml-memory-buffer
+%MSG-w XrdAdaptor:  PostModuleEvent 22-Nov-2023 17:10:02 CET  Run: 1 Event: 529229
+Data is now served from grid.hep.ph.ic.ac.uk instead of previous grid.hep.ph.ic.ac.uk, T2_US_MIT
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:10:03 CET Run: 1 Event: 529782
+Found multiple packed matches for: 47	22	4.85005e-08	-3.95391
+
+%MSG
+%MSG-w LHETablesProducer:  GenWeightsTableProducer:genWeightsTable  22-Nov-2023 17:10:05 CET Run: 1 Event: 530496
+No LHEEventProduct, so there will be no LHE Tables
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:10:08 CET Run: 1 Event: 534736
+Found multiple packed matches for: 84	22	4.31386e-09	3.82666
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:10:30 CET Run: 1 Event: 558756
+Found multiple packed matches for: 52	22	4.92057e-08	2.06738
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:10:42 CET Run: 1 Event: 60224949
+Found multiple packed matches for: 87	22	2.90533e-08	2.01832
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:10:47 CET Run: 1 Event: 60232068
+Found multiple packed matches for: 74	22	4.37049e-08	1.73328
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:12:14 CET Run: 1 Event: 178016391
+Found multiple packed matches for: 48	22	3.86648e-08	-5.9123
+
+%MSG
+%MSG-w XrdAdaptor:  (NoModuleName) 22-Nov-2023 17:12:14 CET pre-events
+Data is now served from grid.hep.ph.ic.ac.uk, T2_US_MIT instead of previous grid.hep.ph.ic.ac.uk
+%MSG
+%MSG-w XrdAdaptor:  PostModuleEvent 22-Nov-2023 17:12:23 CET  Run: 1 Event: 179758101
+Data is now served from grid.hep.ph.ic.ac.uk instead of previous grid.hep.ph.ic.ac.uk, T2_US_MIT
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 17:14:45.015041 +0100][Error  ][PostMaster        ][  450] [gfe02.grid.hep.ph.ic.ac.uk:1095] Forcing error on disconnect: [ERROR] Operation interrupted.
+22-Nov-2023 17:15:53 CET  Closed file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/ac430be5-1dc3-45f2-a2af-af443a08a237.root
+22-Nov-2023 17:15:53 CET  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 17:15:54 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root?xrdcl.requuid=30a96ae7-8620-4545-97a3-87d5be583e9d.
+%MSG
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 17:15:54 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root?tried=&xrdcl.requuid=ea3c971d-42cf-45f6-8434-e0c880a6956f.
+%MSG
+22-Nov-2023 17:15:54 CET  Initiating request to open file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root
+%MSG-w XrdAdaptor:  file_open 22-Nov-2023 17:15:55 CET PostProcessEvent
+Data is served from in2p3.fr instead of original site infn.it
+%MSG
+22-Nov-2023 17:15:55 CET  Successfully opened file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+Begin processing the 10001st record. Run 1, Event 983233, LumiSection 160 on stream 0 at 22-Nov-2023 17:17:35.950 CET
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:17:47 CET Run: 1 Event: 999635
+Found multiple packed matches for: 32	22	2.51503e-08	2.47917
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:18:25 CET Run: 1 Event: 1232537
+Found multiple packed matches for: 53	22	4.78025e-08	-1.93261
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:19:14 CET Run: 1 Event: 1299864
+Found multiple packed matches for: 56	22	3.53238e-08	1.83516
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:20:25 CET Run: 1 Event: 1862192
+Found multiple packed matches for: 72	22	4.92811e-08	2.44869
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:20:59 CET Run: 1 Event: 2332387
+Found multiple packed matches for: 153	22	4.67025e-08	-3.42619
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:21:08 CET Run: 1 Event: 2349037
+Found multiple packed matches for: 73	22	5.79402e-08	2.76269
+
+%MSG
+[2023-11-22 17:21:08.788258 +0100][Error  ][PostMaster        ][  450] [sedsk82.grid.hep.ph.ic.ac.uk:20097] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:21:08.788713 +0100][Error  ][PostMaster        ][  450] [xrootd3.cmsaf.mit.edu:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:21:08.788820 +0100][Error  ][PostMaster        ][  450] [xrootd12.cmsaf.mit.edu:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:21:10.029864 +0100][Error  ][PostMaster        ][  450] [ccdcacli317.in2p3.fr:1095] Forcing error on disconnect: [ERROR] Operation interrupted.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:21:30 CET Run: 1 Event: 2451326
+Found multiple packed matches for: 51	22	4.0427e-08	2.43608
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:21:32 CET Run: 1 Event: 2453800
+Found multiple packed matches for: 124	22	1.12674e-08	1.58081
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:22:46 CET Run: 1 Event: 59233627
+Found multiple packed matches for: 106	22	5.4876e-09	11.0438
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:23:18 CET Run: 1 Event: 59485859
+Found multiple packed matches for: 77	22	3.33974e-08	-0.144428
+
+%MSG
+Begin processing the 20001st record. Run 1, Event 59491547, LumiSection 1397 on stream 0 at 22-Nov-2023 17:23:22.349 CET
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:24:19 CET Run: 1 Event: 60105805
+Found multiple packed matches for: 59	22	2.15196e-08	-1.73836
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:25:09 CET Run: 1 Event: 277361746
+Found multiple packed matches for: 110	22	5.83445e-08	0.303643
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:25:39 CET Run: 1 Event: 277578118
+Found multiple packed matches for: 50	22	2.8177e-08	1.16072
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:26:07 CET Run: 1 Event: 277823721
+Found multiple packed matches for: 54	22	4.34955e-08	-3.81434
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:27:02 CET Run: 1 Event: 278150729
+Found multiple packed matches for: 91	22	5.7261e-08	0.0913079
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:27:19 CET Run: 1 Event: 278177344
+Found multiple packed matches for: 131	22	1.34271e-08	-5.99269
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 17:28:14.797089 +0100][Error  ][TlsMsg            ][  450] [] TLS error rc=0 ec=6 (zero_return) errno=0.
+[2023-11-22 17:28:14.797210 +0100][Error  ][AsyncSock         ][  450] [xrootd.cmsaf.mit.edu:1094.0] Socket error encountered: [ERROR] Socket error
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:28:29 CET Run: 1 Event: 278456599
+Found multiple packed matches for: 58	22	3.65654e-08	0.530523
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+Begin processing the 30001st record. Run 1, Event 278759315, LumiSection 7231 on stream 0 at 22-Nov-2023 17:29:11.244 CET
+[2023-11-22 17:29:46.721513 +0100][Error  ][PostMaster        ][  450] [gfe02.grid.hep.ph.ic.ac.uk:1097] Forcing error on disconnect: [ERROR] Operation interrupted.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:30:04 CET Run: 1 Event: 279536467
+Found multiple packed matches for: 107	22	3.43483e-08	4.09064
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 17:34:21.201245 +0100][Error  ][PostMaster        ][  450] [xrootd-cms-uk.gridpp.rl.ac.uk:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:34:21.201362 +0100][Error  ][PostMaster        ][  450] [llrxrd-redir.in2p3.fr:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:34:21.201400 +0100][Error  ][PostMaster        ][  450] [xrootd-redic.pi.infn.it:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:34:21.201437 +0100][Error  ][PostMaster        ][  450] [xrootd.unl.edu:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:34:24 CET Run: 1 Event: 281661110
+Found multiple packed matches for: 47	22	2.51602e-08	-1.50647
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:34:38 CET Run: 1 Event: 281683556
+Found multiple packed matches for: 113	22	5.93789e-08	1.52608
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:34:48 CET Run: 1 Event: 281695607
+Found multiple packed matches for: 103	22	4.63701e-08	0.416712
+
+%MSG
+[2023-11-22 17:34:51.632159 +0100][Error  ][PostMaster        ][  450] [cms-xrd-transit.cern.ch:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:34:51.632251 +0100][Error  ][PostMaster        ][  450] [cms-xrd-global.cern.ch:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+Begin processing the 40001st record. Run 1, Event 281907676, LumiSection 7807 on stream 0 at 22-Nov-2023 17:35:14.107 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:35:22 CET Run: 1 Event: 281918160
+Found multiple packed matches for: 58	22	5.84325e-08	-5.74362
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 17:36:09.108643 +0100][Error  ][PostMaster        ][  450] [eoscms.cern.ch:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:36:16 CET Run: 1 Event: 282237864
+Found multiple packed matches for: 127	22	3.53103e-08	1.22713
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:37:44 CET Run: 1 Event: 282764150
+Found multiple packed matches for: 119	22	3.09721e-08	5.40942
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:38:45 CET Run: 1 Event: 320350057
+Found multiple packed matches for: 41	22	3.96861e-08	2.29139
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:39:24 CET Run: 1 Event: 320604567
+Found multiple packed matches for: 56	22	4.76827e-08	-1.35743
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:39:29 CET Run: 1 Event: 320610753
+Found multiple packed matches for: 69	22	5.75913e-08	3.49993
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:39:48 CET Run: 1 Event: 320635391
+Found multiple packed matches for: 58	22	5.75622e-08	-0.264883
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:40:15 CET Run: 1 Event: 320665245
+Found multiple packed matches for: 57	22	5.51812e-08	-0.167748
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:40:35 CET Run: 1 Event: 321712482
+Found multiple packed matches for: 69	22	5.07441e-08	0.744324
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+22-Nov-2023 17:41:51 CET  Closed file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/b36d3899-77c5-4a19-8668-a344eaf36ac4.root
+22-Nov-2023 17:41:51 CET  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 17:41:52 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root?xrdcl.requuid=ef9b21f5-d813-43aa-ba16-4bb574f59387.
+%MSG
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 17:41:52 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root?tried=&xrdcl.requuid=0b1b0611-736d-4924-a641-c5b4f4d82ecb.
+%MSG
+22-Nov-2023 17:41:52 CET  Initiating request to open file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root
+%MSG-w XrdAdaptor:  file_open 22-Nov-2023 17:41:54 CET PostProcessEvent
+Data is served from in2p3.fr instead of original site infn.it
+%MSG
+22-Nov-2023 17:41:54 CET  Successfully opened file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root
+Begin processing the 50001st record. Run 1, Event 1170311, LumiSection 318 on stream 0 at 22-Nov-2023 17:42:02.436 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:42:51 CET Run: 1 Event: 1592605
+Found multiple packed matches for: 112	22	2.32407e-08	-1.90787
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:44:11 CET Run: 1 Event: 2094299
+Found multiple packed matches for: 56	22	3.45826e-08	3.92844
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:44:55 CET Run: 1 Event: 2405962
+Found multiple packed matches for: 43	22	4.29911e-08	0.692235
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:46:13 CET Run: 1 Event: 59182330
+Found multiple packed matches for: 85	22	5.25441e-08	-1.52908
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:46:14 CET Run: 1 Event: 59183787
+Found multiple packed matches for: 59	22	2.4615e-08	0.581087
+
+%MSG
+GammaSeries::negative argument x
+[2023-11-22 17:47:06.779250 +0100][Error  ][PostMaster        ][  450] [ccdcacli314.in2p3.fr:30844] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 17:47:09.795269 +0100][Error  ][PostMaster        ][  450] [ccdcacli317.in2p3.fr:1095] Forcing error on disconnect: [ERROR] Operation interrupted.
+Begin processing the 60001st record. Run 1, Event 59951355, LumiSection 1736 on stream 0 at 22-Nov-2023 17:47:44.687 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:48:17 CET Run: 1 Event: 59997640
+Found multiple packed matches for: 66	22	5.2593e-08	-0.989844
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:49:47 CET Run: 1 Event: 60350954
+Found multiple packed matches for: 71	22	5.06427e-08	0.301717
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:49:53 CET Run: 1 Event: 60362754
+Found multiple packed matches for: 68	22	5.3734e-08	-0.986161
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:52:14 CET Run: 1 Event: 277274214
+Found multiple packed matches for: 71	22	3.85015e-08	1.8802
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:52:41 CET Run: 1 Event: 277318323
+Found multiple packed matches for: 51	22	1.67714e-08	0.551483
+
+%MSG
+Begin processing the 70001st record. Run 1, Event 277592693, LumiSection 7052 on stream 0 at 22-Nov-2023 17:53:05.235 CET
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:53:32 CET Run: 1 Event: 277631335
+Found multiple packed matches for: 42	22	3.54624e-08	3.30253
+
+%MSG
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:53:33 CET Run: 1 Event: 277632562
+Found multiple packed matches for: 101	22	3.96414e-08	3.68456
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:54:15 CET Run: 1 Event: 278122845
+Found multiple packed matches for: 58	22	5.84456e-08	0.55434
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:54:18 CET Run: 1 Event: 278127373
+Found multiple packed matches for: 73	22	2.86424e-08	1.49837
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:54:33 CET Run: 1 Event: 278465597
+Found multiple packed matches for: 90	22	2.99608e-08	-1.35623
+
+%MSG
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:55:04 CET Run: 1 Event: 279287694
+Found multiple packed matches for: 110	22	3.1712e-08	-0.789942
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:55:46 CET Run: 1 Event: 280125151
+Found multiple packed matches for: 103	22	3.3236e-08	-7.02748
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:56:34 CET Run: 1 Event: 281249648
+Found multiple packed matches for: 108	22	4.74121e-08	-0.170457
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:56:44 CET Run: 1 Event: 281267814
+Found multiple packed matches for: 66	22	2.67204e-08	2.02931
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 17:56:55 CET Run: 1 Event: 281283004
+Found multiple packed matches for: 83	22	2.1356e-08	-3.45203
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+Begin processing the 80001st record. Run 1, Event 281607343, LumiSection 7788 on stream 0 at 22-Nov-2023 17:58:25.262 CET
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:00:19 CET Run: 1 Event: 282524247
+Found multiple packed matches for: 86	22	3.84389e-08	3.24594
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:00:36 CET Run: 1 Event: 282727677
+Found multiple packed matches for: 70	22	3.11446e-08	0.161091
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+[2023-11-22 18:01:57.031469 +0100][Error  ][PostMaster        ][  450] [eoscms.cern.ch:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:02:59 CET Run: 1 Event: 320941827
+Found multiple packed matches for: 105	22	2.38361e-08	-2.44135
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:03:12 CET Run: 1 Event: 320964426
+Found multiple packed matches for: 98	22	7.66271e-09	-0.671693
+
+%MSG
+Begin processing the 90001st record. Run 1, Event 321824184, LumiSection 8994 on stream 0 at 22-Nov-2023 18:03:43.803 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:03:46 CET Run: 1 Event: 321828822
+Found multiple packed matches for: 67	22	3.65628e-08	-2.75973
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:03:50 CET Run: 1 Event: 321834917
+Found multiple packed matches for: 61	22	3.84703e-08	3.27869
+
+%MSG
+22-Nov-2023 18:03:58 CET  Closed file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/9eb9a997-8da8-4961-a13f-cbadc7f513bb.root
+22-Nov-2023 18:03:58 CET  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 18:03:59 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root?xrdcl.requuid=d0c387d8-af43-43d6-98db-b38e269cc2f2.
+%MSG
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 18:03:59 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root?tried=&xrdcl.requuid=7780d98c-d0c5-4d01-ae9c-16e5d13621c8.
+%MSG
+22-Nov-2023 18:03:59 CET  Initiating request to open file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root
+%MSG-w XrdAdaptor:  file_open 22-Nov-2023 18:04:01 CET PostProcessEvent
+Data is served from in2p3.fr instead of original site infn.it
+%MSG
+22-Nov-2023 18:04:02 CET  Successfully opened file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:04:32 CET Run: 1 Event: 631922
+Found multiple packed matches for: 55	22	4.63443e-08	1.03696
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:08:30 CET Run: 1 Event: 278410054
+Found multiple packed matches for: 53	22	5.64895e-08	-1.46204
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+[2023-11-22 18:09:13.017308 +0100][Error  ][PostMaster        ][  450] [ccdcacli369.in2p3.fr:30725] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 18:09:15.004390 +0100][Error  ][PostMaster        ][  450] [ccdcacli317.in2p3.fr:1095] Forcing error on disconnect: [ERROR] Operation interrupted.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:09:45 CET Run: 1 Event: 282179454
+Found multiple packed matches for: 45	22	4.03244e-08	2.90531
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:09:50 CET Run: 1 Event: 282188595
+Found multiple packed matches for: 68	22	2.60163e-08	3.83789
+
+%MSG
+Begin processing the 100001st record. Run 1, Event 378361082, LumiSection 10383 on stream 0 at 22-Nov-2023 18:12:20.193 CET
+22-Nov-2023 18:12:31 CET  Closed file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/2b75ec4b-da97-46d8-b392-401f171dd14c.root
+22-Nov-2023 18:12:31 CET  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 18:12:32 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root?xrdcl.requuid=380a084a-590c-43ed-82b4-785acdb20d0e.
+%MSG
+%MSG-w XrdAdaptorInternal:  file_open 22-Nov-2023 18:12:32 CET PostProcessEvent
+Failed to open file at URL root://eoscms.cern.ch:1094//eos/cms/store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root?tried=&xrdcl.requuid=46b7f686-4be8-4f78-914c-b3ad521fe23b.
+%MSG
+22-Nov-2023 18:12:32 CET  Initiating request to open file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root
+%MSG-w XrdAdaptor:  file_open 22-Nov-2023 18:12:34 CET PostProcessEvent
+Data is served from desy.de instead of original site infn.it
+%MSG
+22-Nov-2023 18:12:34 CET  Successfully opened file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root
+[2023-11-22 18:13:19.004300 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:13:19.004523 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 40, pConnectionWindow = 31 seconds.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 18:14:01.388203 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:14:01.388397 +0100][Error  ][TlsMsg            ][  450] [] FD 30 TLS shutdown failed; error_ssl.
+[2023-11-22 18:14:01.388573 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 42, pConnectionWindow = 31 seconds.
+[2023-11-22 18:14:01.483527 +0100][Error  ][TlsMsg            ][  450] [] TLS error rc=-1 ec=5 (error_syscall) errno=104.
+[2023-11-22 18:14:01.483636 +0100][Error  ][TlsMsg            ][  450] Failed to do TLS connect: Unable to connect to t2-cms-xrootd03.desy.de; connection reset by peer
+[2023-11-22 18:14:01.483645 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] TLS error
+[2023-11-22 18:14:01.483693 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 0, pConnectionWindow = 31 seconds.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:14:18 CET Run: 1 Event: 1741480
+Found multiple packed matches for: 38	22	4.05725e-08	-0.772901
+
+%MSG
+[2023-11-22 18:14:55.425185 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:14:55.425288 +0100][Error  ][TlsMsg            ][  450] [] FD 30 TLS shutdown failed; error_ssl.
+[2023-11-22 18:14:55.425561 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 54, pConnectionWindow = 31 seconds.
+[2023-11-22 18:14:55.425659 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] Unable to recover: [ERROR] Socket timeout.
+[2023-11-22 18:14:55.425672 +0100][Error  ][XRootD            ][  450] [t2-cms-xrootd03.desy.de:1094] Impossible to send message kXR_open (file: /store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root?tried=t2-cms-xrootd02.desy.de&triedrc=resel, mode: 0660, flags: kXR_open_read kXR_async kXR_retstat ). Trying to recover.
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:15:47 CET Run: 1 Event: 108091825
+Found multiple packed matches for: 40	22	4.25801e-08	-2.86956
+
+%MSG
+[2023-11-22 18:15:51.959245 +0100][Error  ][PostMaster        ][  450] [[2001:660:5009:9:193:48:99:125]:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:16:41 CET Run: 1 Event: 164668415
+Found multiple packed matches for: 46	22	1.81345e-08	4.40607
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:17:21 CET Run: 1 Event: 165047604
+Found multiple packed matches for: 76	22	4.54894e-08	-2.01351
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 18:17:32.199262 +0100][Error  ][PostMaster        ][  450] [ccdcacli478.in2p3.fr:30365] Forcing error on disconnect: [ERROR] Operation interrupted.
+[2023-11-22 18:17:34.209363 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd02.desy.de:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+Begin processing the 110001st record. Run 1, Event 165255934, LumiSection 4633 on stream 0 at 22-Nov-2023 18:17:40.917 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:18:30 CET Run: 1 Event: 165617227
+Found multiple packed matches for: 47	22	3.91373e-08	0.659115
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:19:30 CET Run: 1 Event: 177192543
+Found multiple packed matches for: 48	22	5.12963e-08	-3.34952
+
+%MSG
+[2023-11-22 18:20:21.469933 +0100][Error  ][TlsMsg            ][  450] [] TLS error rc=-1 ec=5 (error_syscall) errno=104.
+[2023-11-22 18:20:21.470023 +0100][Error  ][TlsMsg            ][  450] Failed to do TLS connect: Unable to connect to t2-cms-xrootd03.desy.de; connection reset by peer
+[2023-11-22 18:20:21.470038 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] TLS error
+[2023-11-22 18:20:21.470151 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 17, pConnectionWindow = 31 seconds.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:20:28 CET Run: 1 Event: 278921588
+Found multiple packed matches for: 122	22	3.04769e-08	-0.980169
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:20:39 CET Run: 1 Event: 278938282
+Found multiple packed matches for: 43	22	4.18109e-08	-0.950407
+
+%MSG
+[2023-11-22 18:21:14.218179 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:21:14.218374 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 53, pConnectionWindow = 31 seconds.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:21:20 CET Run: 1 Event: 316293948
+Found multiple packed matches for: 94	22	3.61877e-08	4.6146
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+[2023-11-22 18:21:54.907188 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:21:54.907450 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 40, pConnectionWindow = 31 seconds.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:22:15 CET Run: 1 Event: 316623578
+Found multiple packed matches for: 77	22	2.86882e-08	1.46784
+
+%MSG
+GammaSeries::negative argument x
+[2023-11-22 18:22:35.313521 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:22:35.313701 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 41, pConnectionWindow = 31 seconds.
+[2023-11-22 18:22:35.313714 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] Unable to recover: [ERROR] Socket timeout.
+[2023-11-22 18:22:35.313730 +0100][Error  ][XRootD            ][  450] [t2-cms-xrootd03.desy.de:1094] Impossible to send message kXR_open (file: /store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root?tried=t2-cms-xrootd02.desy.de&triedrc=resel, mode: 0660, flags: kXR_open_read kXR_async kXR_retstat ). Trying to recover.
+Begin processing the 120001st record. Run 1, Event 318874910, LumiSection 8485 on stream 0 at 22-Nov-2023 18:22:54.344 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:26:09 CET Run: 1 Event: 320115488
+Found multiple packed matches for: 101	22	3.94833e-08	3.94274
+
+%MSG
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:26:20 CET Run: 1 Event: 320276161
+Found multiple packed matches for: 71	22	4.92608e-08	1.5423
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+[2023-11-22 18:27:41.440275 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:27:41.440527 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 45, pConnectionWindow = 31 seconds.
+Begin processing the 130001st record. Run 1, Event 332444299, LumiSection 9353 on stream 0 at 22-Nov-2023 18:27:53.493 CET
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:28:09 CET Run: 1 Event: 332473444
+Found multiple packed matches for: 92	22	4.23265e-08	1.93329
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+[2023-11-22 18:28:31.707188 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:28:31.707389 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 50, pConnectionWindow = 31 seconds.
+[2023-11-22 18:29:07.311171 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:29:07.311257 +0100][Error  ][TlsMsg            ][  450] [] FD 19 TLS shutdown failed; error_ssl.
+[2023-11-22 18:29:07.311454 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 36, pConnectionWindow = 31 seconds.
+[2023-11-22 18:29:07.406064 +0100][Error  ][TlsMsg            ][  450] [] TLS error rc=-1 ec=5 (error_syscall) errno=104.
+[2023-11-22 18:29:07.406149 +0100][Error  ][TlsMsg            ][  450] Failed to do TLS connect: Unable to connect to t2-cms-xrootd03.desy.de; connection reset by peer
+[2023-11-22 18:29:07.406158 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] TLS error
+[2023-11-22 18:29:07.406229 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 0, pConnectionWindow = 31 seconds.
+[2023-11-22 18:29:07.406236 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] Unable to recover: [ERROR] TLS error.
+[2023-11-22 18:29:07.406247 +0100][Error  ][XRootD            ][  450] [t2-cms-xrootd03.desy.de:1094] Impossible to send message kXR_open (file: /store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root?tried=t2-cms-xrootd02.desy.de&triedrc=resel, mode: 0660, flags: kXR_open_read kXR_async kXR_retstat ). Trying to recover.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:29:19 CET Run: 1 Event: 332976182
+Found multiple packed matches for: 92	22	4.63421e-08	-1.98673
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:29:38 CET Run: 1 Event: 333043940
+Found multiple packed matches for: 61	22	5.2947e-08	1.92623
+
+%MSG
+GammaSeries::negative argument x
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:30:14 CET Run: 1 Event: 333283141
+Found multiple packed matches for: 92	22	3.58767e-08	0.665664
+
+%MSG
+[2023-11-22 18:30:51.721279 +0100][Error  ][PostMaster        ][  450] [ccxrdcms.in2p3.fr:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:31:04 CET Run: 1 Event: 333358417
+Found multiple packed matches for: 87	22	5.0419e-08	1.04851
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:31:04 CET Run: 1 Event: 333360370
+Found multiple packed matches for: 149	22	3.2906e-08	-2.27265
+
+%MSG
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:31:41 CET Run: 1 Event: 334445535
+Found multiple packed matches for: 92	22	5.5754e-08	3.19786
+
+%MSG
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:32:04 CET Run: 1 Event: 334485411
+Found multiple packed matches for: 135	22	1.65315e-08	1.60206
+
+%MSG
+[2023-11-22 18:32:33.057305 +0100][Error  ][PostMaster        ][  450] [eoscms.cern.ch:1094] Forcing error on disconnect: [ERROR] Operation interrupted.
+%MSG-w MergedGenParticleProducer:  MergedGenParticleProducer:mergedGenParticles  22-Nov-2023 18:32:33 CET Run: 1 Event: 334783216
+Found multiple packed matches for: 81	22	5.45693e-08	-1.9189
+
+%MSG
+Begin processing the 140001st record. Run 1, Event 335233357, LumiSection 9921 on stream 0 at 22-Nov-2023 18:32:53.724 CET
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+[2023-11-22 18:33:49.570234 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] Socket timeout
+[2023-11-22 18:33:49.570340 +0100][Error  ][TlsMsg            ][  450] [] FD 16 TLS shutdown failed; error_ssl.
+[2023-11-22 18:33:49.570525 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 32, pConnectionWindow = 31 seconds.
+[2023-11-22 18:33:49.689959 +0100][Error  ][TlsMsg            ][  450] [] TLS error rc=-1 ec=5 (error_syscall) errno=104.
+[2023-11-22 18:33:49.690024 +0100][Error  ][TlsMsg            ][  450] Failed to do TLS connect: Unable to connect to t2-cms-xrootd03.desy.de; connection reset by peer
+[2023-11-22 18:33:49.690035 +0100][Error  ][AsyncSock         ][  450] [t2-cms-xrootd03.desy.de:1094.0] Socket error while handshaking: [ERROR] TLS error
+[2023-11-22 18:33:49.690085 +0100][Error  ][PostMaster        ][  450] [t2-cms-xrootd03.desy.de:1094] elapsed = 0, pConnectionWindow = 31 seconds.
+GammaSeries::negative argument x
+GammaSeries::a too large, ITMAX too small
+GammaSeries::negative argument x
+22-Nov-2023 18:34:59 CET  Closed file root://xrootd-cms.infn.it//store/mc/Run3Summer22EEMiniAODv3/BuToKEE_SoftQCD_TuneCP5_13p6TeV_pythia8-evtgen/MINIAODSIM/124X_mcRun3_2022_realistic_postEE_v1-v2/40000/f2435496-6484-4ef7-b173-3a094f119f6f.root
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 144166 passed = 9685 failed = 134481
+
+TrigReport ---------- Path   Summary ------------
+TrigReport  Trig Bit#   Executed     Passed     Failed      Error Name
+TrigReport     1    0     144166       9685     134481          0 nanoAOD_DiEle_step
+
+TrigReport -------End-Path   Summary ------------
+TrigReport  Trig Bit#   Executed     Passed     Failed      Error Name
+TrigReport     0    0     144166     144166          0          0 endjob_step
+TrigReport     0    1     144166     144166          0          0 NANOAODoutput_step
+
+TrigReport ---------- Modules in Path: nanoAOD_DiEle_step ------------
+TrigReport  Trig Bit#    Visited     Passed     Failed      Error Name
+TrigReport     1    0     144166     144166          0          0 mergedGenParticles
+TrigReport     1    1     144166     144166          0          0 genParticles2HepMC
+TrigReport     1    2     144166     144166          0          0 particleLevel
+TrigReport     1    3     144166     144166          0          0 finalGenParticlesBPark
+TrigReport     1    4     144166     144166          0          0 genParticleBParkTable
+TrigReport     1    5     144166     144166          0          0 lheInfoTable
+TrigReport     1    6     144166     144166          0          0 nanoMetadata
+TrigReport     1    7     144166     144166          0          0 unpackedPatTrigger
+TrigReport     1    8     144166     144166          0          0 triggerObjectBParkTable
+TrigReport     1    9     144166     144166          0          0 l1bits
+TrigReport     1   10     144166     144166          0          0 trgTable
+TrigReport     1   11     144166     144166          0          0 myUnpackedPatTrigger
+TrigReport     1   12     144166     144166          0          0 myTriggerMatches
+TrigReport     1   13     144166     144166          0          0 mySlimmedElectronsWithEmbeddedTrigger
+TrigReport     1   14     144166     144166          0          0 electronTrgSelector
+TrigReport     1   15     144166      10956     133210          0 countTrgElectrons
+TrigReport     1   16      10956      10956          0          0 tracksBPark
+TrigReport     1   17      10956      10956          0          0 tracksBParkMCMatchForTable
+TrigReport     1   18      10956      10956          0          0 tracksBParkMCMatchEmbedded
+TrigReport     1   19      10956      10956          0          0 tracksBParkMCTable
+TrigReport     1   20      10956      10956          0          0 trackBParkTable
+TrigReport     1   21      10956      10956          0          0 electronMVAValueMapProducer
+TrigReport     1   22      10956      10956          0          0 electronsForAnalysis
+TrigReport     1   23      10956      10956          0          0 electronsBParkMCMatchForTable
+TrigReport     1   24      10956      10956          0          0 selectedElectronsMCMatchEmbedded
+TrigReport     1   25      10956      10956          0          0 electronBParkMCTable
+TrigReport     1   26      10956      10956          0          0 electronBParkTable
+TrigReport     1   27      10956      10956          0          0 electronPairsForKee
+TrigReport     1   28      10956      10956          0          0 BToKee
+TrigReport     1   29      10956      10956          0          0 BToKeeTable
+TrigReport     1   30      10956       9685       1271          0 CountBToKee
+TrigReport     1   31       9685       9685          0          0 electronMVAValueMapProducer
+TrigReport     1   32       9685       9685          0          0 electronsForAnalysis
+TrigReport     1   33       9685       9685          0          0 electronsBParkMCMatchForTable
+TrigReport     1   34       9685       9685          0          0 selectedElectronsMCMatchEmbedded
+TrigReport     1   35       9685       9685          0          0 electronBParkMCTable
+TrigReport     1   36       9685       9685          0          0 electronBParkTable
+TrigReport     1   37       9685       9685          0          0 KstarToKPi
+TrigReport     1   38       9685       9685          0          0 electronPairsForKstarEE
+TrigReport     1   39       9685       9685          0          0 BToKstarEE
+TrigReport     1   40       9685       9685          0          0 BToKstarEETable
+TrigReport     1   41       9685       9685          0          0 KstarToKPiTable
+TrigReport     1   42       9685       9685          0          0 CountBToKstarEE
+
+TrigReport ------ Modules in End-Path: endjob_step ------------
+TrigReport  Trig Bit#    Visited     Passed     Failed      Error Name
+TrigReport     0    0     144166     144166          0          0 MEtoEDMConverter
+
+TrigReport ------ Modules in End-Path: NANOAODoutput_step ------------
+TrigReport  Trig Bit#    Visited     Passed     Failed      Error Name
+TrigReport     0    0     144166     144166          0          0 NANOAODoutput
+
+TrigReport ---------- Module Summary ------------
+TrigReport    Visited   Executed     Passed     Failed      Error Name
+TrigReport      10956      10956      10956          0          0 BToKee
+TrigReport      10956      10956      10956          0          0 BToKeeTable
+TrigReport       9685       9685       9685          0          0 BToKstarEE
+TrigReport       9685       9685       9685          0          0 BToKstarEETable
+TrigReport      10956      10956       9685       1271          0 CountBToKee
+TrigReport       9685       9685       9685          0          0 CountBToKstarEE
+TrigReport       9685       9685       9685          0          0 KstarToKPi
+TrigReport       9685       9685       9685          0          0 KstarToKPiTable
+TrigReport     144166     144166     144166          0          0 MEtoEDMConverter
+TrigReport     144166     144166     144166          0          0 NANOAODoutput
+TrigReport     144166     144166     144166          0          0 NANOAODoutput_step
+TrigReport     144166     144166     144166          0          0 TriggerResults
+TrigReport       9685       9685       9685          0          0 beamSpotTable
+TrigReport     144166     144166      10956     133210          0 countTrgElectrons
+TrigReport      20641      10956      10956          0          0 electronBParkMCTable
+TrigReport      20641      10956      10956          0          0 electronBParkTable
+TrigReport      20641      10956      10956          0          0 electronMVAValueMapProducer
+TrigReport      10956      10956      10956          0          0 electronPairsForKee
+TrigReport       9685       9685       9685          0          0 electronPairsForKstarEE
+TrigReport     144166     144166     144166          0          0 electronTrgSelector
+TrigReport      20641      10956      10956          0          0 electronsBParkMCMatchForTable
+TrigReport      20641      10956      10956          0          0 electronsForAnalysis
+TrigReport     144166     144166     144166          0          0 endjob_step
+TrigReport     144166     144166     144166          0          0 finalGenParticlesBPark
+TrigReport          0          0          0          0          0 genFilterTable
+TrigReport     144166     144166     144166          0          0 genParticleBParkTable
+TrigReport     144166     144166     144166          0          0 genParticles2HepMC
+TrigReport       9685       9685       9685          0          0 genTable
+TrigReport      58110       9685       9685          0          0 genWeightsTable
+TrigReport     144166     144166     144166          0          0 l1bits
+TrigReport     144166     144166     144166          0          0 lheInfoTable
+TrigReport     144166     144166     144166          0          0 mergedGenParticles
+TrigReport     144166     144166     144166          0          0 mySlimmedElectronsWithEmbeddedTrigger
+TrigReport     144166     144166     144166          0          0 myTriggerMatches
+TrigReport     144166     144166     144166          0          0 myUnpackedPatTrigger
+TrigReport     144166     144166     144166          0          0 nanoAOD_DiEle_step
+TrigReport     144166     144166     144166          0          0 nanoMetadata
+TrigReport     144166     144166     144166          0          0 particleLevel
+TrigReport       9685       9685       9685          0          0 puTable
+TrigReport       9685       9685       9685          0          0 rhoTable
+TrigReport      20641      10956      10956          0          0 selectedElectronsMCMatchEmbedded
+TrigReport       9685       9685       9685          0          0 svCandidateTable
+TrigReport      10956      10956      10956          0          0 trackBParkTable
+TrigReport      10956      10956      10956          0          0 tracksBPark
+TrigReport      10956      10956      10956          0          0 tracksBParkMCMatchEmbedded
+TrigReport      10956      10956      10956          0          0 tracksBParkMCMatchForTable
+TrigReport      10956      10956      10956          0          0 tracksBParkMCTable
+TrigReport     144166     144166     144166          0          0 trgTable
+TrigReport     144166     144166     144166          0          0 triggerObjectBParkTable
+TrigReport     144166     144166     144166          0          0 unpackedPatTrigger
+TrigReport      38740       9685       9685          0          0 vertexTable
+
+TimeReport ---------- Event  Summary ---[sec]----
+TimeReport       event loop CPU/event = 0.030971
+TimeReport      event loop Real/event = 0.035484
+TimeReport     sum Streams Real/event = 0.034867
+TimeReport efficiency CPU/Real/thread = 0.872836
+
+TimeReport ---------- Path   Summary ---[Real sec]----
+TimeReport  per event     per exec  Name
+TimeReport   0.034257     0.034257  nanoAOD_DiEle_step
+TimeReport  per event     per exec  Name
+
+TimeReport -------End-Path   Summary ---[Real sec]----
+TimeReport  per event     per exec  Name
+TimeReport   0.034764     0.034764  endjob_step
+TimeReport   0.034759     0.034759  NANOAODoutput_step
+TimeReport  per event     per exec  Name
+
+TimeReport ---------- Modules in Path: nanoAOD_DiEle_step ---[Real sec]----
+TimeReport  per event    per visit  Name
+TimeReport   0.000914     0.000914  mergedGenParticles
+TimeReport   0.000797     0.000797  genParticles2HepMC
+TimeReport   0.018941     0.018941  particleLevel
+TimeReport   0.000144     0.000144  finalGenParticlesBPark
+TimeReport   0.000351     0.000351  genParticleBParkTable
+TimeReport   0.000006     0.000006  lheInfoTable
+TimeReport   0.000001     0.000001  nanoMetadata
+TimeReport   0.000242     0.000242  unpackedPatTrigger
+TimeReport   0.000029     0.000029  triggerObjectBParkTable
+TimeReport   0.000039     0.000039  l1bits
+TimeReport   0.000372     0.000372  trgTable
+TimeReport   0.000270     0.000270  myUnpackedPatTrigger
+TimeReport   0.001896     0.001896  myTriggerMatches
+TimeReport   0.000053     0.000053  mySlimmedElectronsWithEmbeddedTrigger
+TimeReport   0.000461     0.000461  electronTrgSelector
+TimeReport   0.000002     0.000002  countTrgElectrons
+TimeReport   0.000329     0.004326  tracksBPark
+TimeReport   0.000005     0.000064  tracksBParkMCMatchForTable
+TimeReport   0.000009     0.000114  tracksBParkMCMatchEmbedded
+TimeReport   0.000001     0.000020  tracksBParkMCTable
+TimeReport   0.000074     0.000975  trackBParkTable
+TimeReport   0.000031     0.000410  electronMVAValueMapProducer
+TimeReport   0.000009     0.000120  electronsForAnalysis
+TimeReport   0.000001     0.000008  electronsBParkMCMatchForTable
+TimeReport   0.000001     0.000010  selectedElectronsMCMatchEmbedded
+TimeReport   0.000001     0.000007  electronBParkMCTable
+TimeReport   0.000009     0.000121  electronBParkTable
+TimeReport   0.000018     0.000236  electronPairsForKee
+TimeReport   0.002551     0.033569  BToKee
+TimeReport   0.000040     0.000526  BToKeeTable
+TimeReport   0.000001     0.000009  CountBToKee
+TimeReport   0.000000     0.000000  electronMVAValueMapProducer
+TimeReport   0.000000     0.000000  electronsForAnalysis
+TimeReport   0.000000     0.000000  electronsBParkMCMatchForTable
+TimeReport   0.000000     0.000000  selectedElectronsMCMatchEmbedded
+TimeReport   0.000000     0.000000  electronBParkMCTable
+TimeReport   0.000000     0.000000  electronBParkTable
+TimeReport   0.000191     0.002849  KstarToKPi
+TimeReport   0.000006     0.000094  electronPairsForKstarEE
+TimeReport   0.000021     0.000308  BToKstarEE
+TimeReport   0.000002     0.000032  BToKstarEETable
+TimeReport   0.000005     0.000074  KstarToKPiTable
+TimeReport   0.000000     0.000002  CountBToKstarEE
+TimeReport  per event    per visit  Name
+
+TimeReport ------ Modules in End-Path: endjob_step ---[Real sec]----
+TimeReport  per event    per visit  Name
+TimeReport   0.000001     0.000001  MEtoEDMConverter
+
+TimeReport ------ Modules in End-Path: NANOAODoutput_step ---[Real sec]----
+TimeReport  per event    per visit  Name
+TimeReport   0.000295     0.000295  NANOAODoutput
+TimeReport  per event    per visit  Name
+
+TimeReport ---------- Module Summary ---[Real sec]----
+TimeReport  per event     per exec    per visit  Name
+TimeReport   0.002551     0.033569     0.033569  BToKee
+TimeReport   0.000040     0.000526     0.000526  BToKeeTable
+TimeReport   0.000021     0.000308     0.000308  BToKstarEE
+TimeReport   0.000002     0.000032     0.000032  BToKstarEETable
+TimeReport   0.000001     0.000009     0.000009  CountBToKee
+TimeReport   0.000000     0.000002     0.000002  CountBToKstarEE
+TimeReport   0.000191     0.002849     0.002849  KstarToKPi
+TimeReport   0.000005     0.000074     0.000074  KstarToKPiTable
+TimeReport   0.000001     0.000001     0.000001  MEtoEDMConverter
+TimeReport   0.000295     0.004391     0.000295  NANOAODoutput
+TimeReport   0.000002     0.000002     0.000002  NANOAODoutput_step
+TimeReport   0.000002     0.000002     0.000002  TriggerResults
+TimeReport   0.000001     0.000016     0.000016  beamSpotTable
+TimeReport   0.000002     0.000002     0.000002  countTrgElectrons
+TimeReport   0.000001     0.000007     0.000004  electronBParkMCTable
+TimeReport   0.000009     0.000121     0.000064  electronBParkTable
+TimeReport   0.000031     0.000410     0.000218  electronMVAValueMapProducer
+TimeReport   0.000018     0.000236     0.000236  electronPairsForKee
+TimeReport   0.000006     0.000094     0.000094  electronPairsForKstarEE
+TimeReport   0.000461     0.000461     0.000461  electronTrgSelector
+TimeReport   0.000001     0.000008     0.000004  electronsBParkMCMatchForTable
+TimeReport   0.000009     0.000120     0.000064  electronsForAnalysis
+TimeReport   0.000001     0.000001     0.000001  endjob_step
+TimeReport   0.000144     0.000144     0.000144  finalGenParticlesBPark
+TimeReport   0.000000     0.000000     0.000000  genFilterTable
+TimeReport   0.000351     0.000351     0.000351  genParticleBParkTable
+TimeReport   0.000797     0.000797     0.000797  genParticles2HepMC
+TimeReport   0.000007     0.000100     0.000100  genTable
+TimeReport   0.000001     0.000018     0.000018  genWeightsTable
+TimeReport   0.000039     0.000039     0.000039  l1bits
+TimeReport   0.000006     0.000006     0.000006  lheInfoTable
+TimeReport   0.000914     0.000914     0.000914  mergedGenParticles
+TimeReport   0.000053     0.000053     0.000053  mySlimmedElectronsWithEmbeddedTrigger
+TimeReport   0.001896     0.001896     0.001896  myTriggerMatches
+TimeReport   0.000270     0.000270     0.000270  myUnpackedPatTrigger
+TimeReport   0.000002     0.000002     0.000002  nanoAOD_DiEle_step
+TimeReport   0.000001     0.000001     0.000001  nanoMetadata
+TimeReport   0.018941     0.018941     0.018941  particleLevel
+TimeReport   0.000001     0.000008     0.000008  puTable
+TimeReport   0.000000     0.000007     0.000007  rhoTable
+TimeReport   0.000001     0.000010     0.000005  selectedElectronsMCMatchEmbedded
+TimeReport   0.000002     0.000025     0.000025  svCandidateTable
+TimeReport   0.000074     0.000975     0.000975  trackBParkTable
+TimeReport   0.000329     0.004326     0.004326  tracksBPark
+TimeReport   0.000009     0.000114     0.000114  tracksBParkMCMatchEmbedded
+TimeReport   0.000005     0.000064     0.000064  tracksBParkMCMatchForTable
+TimeReport   0.000001     0.000020     0.000020  tracksBParkMCTable
+TimeReport   0.000372     0.000372     0.000372  trgTable
+TimeReport   0.000029     0.000029     0.000029  triggerObjectBParkTable
+TimeReport   0.000242     0.000242     0.000242  unpackedPatTrigger
+TimeReport   0.000006     0.000094     0.000094  vertexTable
+TimeReport  per event     per exec    per visit  Name
+
+T---Report end!
+
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 LHETablesProducer    -w GenWeightsTableP                       1        1
+    2 LogicError           -w GenWeightsTableP                       2        2
+    3 MergedGenParticlePro -w MergedGenParticl                      87       87
+    4 XrdAdaptor           -w (NoModuleName)                         2        2
+    5 XrdAdaptor           -w PostModuleEvent                        2        2
+    6 XrdAdaptor           -w file_open                              5        5
+    7 XrdAdaptorInternal   -w file_open                             10       10
+    8 fileAction           -s file_close                             5        5
+    9 fileAction           -s file_open                             15       15
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 LHETablesProducer    1/530496                          
+    2 LogicError           Run: 1           Run: 1           
+    3 MergedGenParticleProducer 1/529782         1/534736         1/334783216
+    4 XrdAdaptor           pre-events       pre-events       
+    5 XrdAdaptor           1/529229         1/179758101      
+    6 XrdAdaptor           pre-events       PostProcessEvent PostProcessEvent
+    7 XrdAdaptorInternal   pre-events       pre-events       PostProcessEvent
+    8 fileAction           PostProcessEvent PostProcessEvent End Run: 1
+    9 fileAction           pre-events       pre-events       PostProcessEvent
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning               109                 109
+System                 20                  20
+
+dropped waiting message count 0
+
+The MCnet usage guidelines apply to Rivet: see http://www.montecarlonet.org/GUIDELINES
+Please acknowledge Rivet in results made using it, and cite https://arxiv.org/abs/1912.05451
