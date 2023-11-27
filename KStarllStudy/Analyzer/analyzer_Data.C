@@ -1,4 +1,4 @@
-#if !defined(__CINT__) || defined(__MAKECINT__)
+#if!defined(__CINT__) || defined(__MAKECINT__)
 #include <TROOT.h>                  // access to gROOT, entry point to ROOT system
 #include <TSystem.h>                // interface to OS
 #include <TFile.h>                  // file handle class
@@ -13,7 +13,7 @@
 #include <utility>
 #include <iostream>                 // standard I/O
 #include <iomanip>                  // functions to format standard I/O
-#include <fstream>                  // functions for file I/O
+#include <fstream>                  // functions forfile I/O
 #include <bitset>
 #include "TLorentzVector.h"         // 4-vector class
 #include <THStack.h>
@@ -49,14 +49,14 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 										TString filename) {
     // Open the ROOT file
     TFile* file = TFile::Open(filename);
-    if (!file || file->IsZombie()) {
+    if(!file || file->IsZombie()) {
         // Handle file open error
         return;
     }
 
     // Get the TTree containing the data (replace "Events" with your tree name)
     TTree* tree = dynamic_cast<TTree*>(file->Get("Events"));
-    if (!tree) {
+    if(!tree) {
         // Handle tree retrieval error
         file->Close();
         return;
@@ -123,8 +123,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		TTreeReaderArray<Float_t> PV_x(reader, "PV_x");
 		TTreeReaderArray<Float_t> PV_y(reader, "PV_y");
 		TTreeReaderArray<Float_t> PV_z(reader, "PV_z");
-		
-		
+			
 		TTreeReaderValue<UChar_t> L1_DoubleEG11_er1p2_dR_Max0p6(reader, "L1_DoubleEG11_er1p2_dR_Max0p6");
 		TTreeReaderValue<UChar_t> L1_DoubleEG10p5_er1p2_dR_Max0p6(reader, "L1_DoubleEG10p5_er1p2_dR_Max0p6");
 		TTreeReaderValue<UChar_t> L1_DoubleEG10_er1p2_dR_Max0p6(reader, "L1_DoubleEG10_er1p2_dR_Max0p6");
@@ -157,9 +156,10 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 
     // Loop through the entries
     Long64_t numEntries = tree->GetEntries();
-    for (Long64_t ievt = 0; ievt < numEntries; ++ievt) {
+    for(Long64_t ievt = 0; ievt < numEntries; ++ievt) {
+		// for(Long64_t ievt = 0; ievt < 100; ++ievt) {
 				reader.SetLocalEntry(ievt);
-        if (ievt % 1000 == 0) {
+        if(ievt % 1000 == 0) {
             std::cout << "Processing " << static_cast<double>(ievt) / numEntries << std::endl;
         }
 
@@ -202,7 +202,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				L1_values.push_back(int(*L1_DoubleEG11_er1p2_dR_Max0p6));
 				
 				int index_HLT_highest = -99;
-				for (size_t i = 0; i < HLT_values.size(); ++i) {
+				for(size_t i = 0; i < HLT_values.size(); ++i) {
 					if(HLT_values[HLT_values.size()-1-i] == 1){
 						index_HLT_highest = HLT_values.size()-1-i;
 						break;
@@ -210,7 +210,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				}
 				
 				int index_L1_highest = -99;
-				for (size_t i = 0; i < L1_values.size(); ++i) {
+				for(size_t i = 0; i < L1_values.size(); ++i) {
 					if(L1_values[L1_values.size()-1-i] == 1){
 						index_L1_highest = L1_values.size()-1-i;
 						break;
@@ -220,9 +220,9 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				
 				hist2d_1_1->Fill((index_L1_highest+8)*0.5,(index_HLT_highest+8)*0.5,1);
 				
-				// for (size_t i = 0; i < L1_values.size(); ++i) {
-						// for (size_t j = 0; j < HLT_values.size(); ++j) {
-								// if (L1_values[i] && HLT_values[j]) {
+				// for(size_t i = 0; i < L1_values.size(); ++i) {
+						// for(size_t j = 0; j < HLT_values.size(); ++j) {
+								// if(L1_values[i] && HLT_values[j]) {
 										// hist2d_1_1->Fill((i+8)*0.5,(j+8)*0.5,1);
 								// }
 						// }
@@ -233,23 +233,23 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				std::set<float> unique_BToKEE_noKstar_m;
 				std::set<float> unique_BToKEE_noKstar_mll;
 				
-				for (size_t iBKee = 0; iBKee < BToKEE_mass.GetSize(); ++iBKee) {
+				for(size_t iBKee = 0; iBKee < BToKEE_mass.GetSize(); ++iBKee) {
 						int l1_index = BToKEE_l1Idx[iBKee];
 						int l2_index = BToKEE_l2Idx[iBKee];
 						int k_index = BToKEE_kIdx[iBKee];
 						
-						if (BToKEE_fit_mass[iBKee] < 4.7 || BToKEE_fit_mass[iBKee] > 5.7) continue;
+						if(BToKEE_fit_mass[iBKee] < 4.7 || BToKEE_fit_mass[iBKee] > 5.7) continue;
 						
-						if (Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
-						if (abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
-						if (ProbeTracks_pt[k_index] < 0.5) {continue;}
-						if (abs(ProbeTracks_eta[k_index]) > 1.22) {continue;}
-						if (!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0 || BToKEE_mll_charge[iBKee] != 0) {continue;}
+						if(Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
+						if(abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
+						if(ProbeTracks_pt[k_index] < 0.5) {continue;}
+						if(abs(ProbeTracks_eta[k_index]) > 1.22) {continue;}
+						if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0 || BToKEE_mll_charge[iBKee] != 0) {continue;}
 						
 						nTriplets++;
 						
 						bool isPartOfBKStar = false;
-						for (size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
+						for(size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
 								if((BToKsEE_l1_idx[iBKStaree] == l1_index && 
 									 BToKsEE_l2_idx[iBKStaree] == l2_index &&
 									 BToKsEE_trk1_idx[iBKStaree] == k_index) ||
@@ -323,7 +323,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 							hist1_2->Fill(BToKEE_mll_fullfit[iBKee]);
 						}
 						
-						// if (!isPartOfBKStar){
+						// if(!isPartOfBKStar){
 			
 							// int isize = unique_BToKEE_noKstar_m.size();
 							// unique_BToKEE_noKstar_m.insert(BToKEE_fit_mass[iBKee]);
@@ -343,21 +343,21 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				std::set<float> unique_BToKsEE_m;
 				std::set<float> unique_Ks_m;
 				
-				for (size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
+				for(size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
 					
 					int l1_index = BToKsEE_l1_idx[iBKStaree];
 					int l2_index = BToKsEE_l2_idx[iBKStaree];
 					int trk1_index = BToKsEE_trk1_idx[iBKStaree];
 					int trk2_index = BToKsEE_trk2_idx[iBKStaree];
 					
-					if (BToKsEE_fit_mass[iBKStaree] < 4.7 || BToKsEE_fit_mass[iBKStaree] > 5.7) continue;
-					if (BToKsEE_fit_kstar_mass[iBKStaree] < 0.792 || BToKsEE_fit_kstar_mass[iBKStaree] > 0.992) continue;
+					if(BToKsEE_fit_mass[iBKStaree] < 4.7 || BToKsEE_fit_mass[iBKStaree] > 5.7) continue;
+					if(BToKsEE_fit_kstar_mass[iBKStaree] < 0.792 || BToKsEE_fit_kstar_mass[iBKStaree] > 0.992) continue;
 					
-					if (Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
-					if (abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
-					if (ProbeTracks_pt[trk1_index] < 0.5 || ProbeTracks_pt[trk2_index] < 0.5 ) {continue;}
-					if (abs(ProbeTracks_eta[trk1_index]) > 1.22 || abs(ProbeTracks_eta[trk2_index]) > 1.22) {continue;}
-					if (!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0) {continue;}
+					if(Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
+					if(abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
+					if(ProbeTracks_pt[trk1_index] < 0.5 || ProbeTracks_pt[trk2_index] < 0.5 ) {continue;}
+					if(abs(ProbeTracks_eta[trk1_index]) > 1.22 || abs(ProbeTracks_eta[trk2_index]) > 1.22) {continue;}
+					if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0) {continue;}
 					
 					nQuadruplets++;
 					
@@ -378,9 +378,10 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		}
     // Close the file
     file->Close();
+		
 }
 
-void analyzer(TString filename, int ifile) {
+void analyzer_Data(TString filename, int ifile) {
     // Create histograms to store muon pt values
     TH1F* hist1_1 = new TH1F("hist1_1", "B mass (all triplet)", 1000, 3, 8);
 		TH1F* hist1_2 = new TH1F("hist1_2", "ll mass (all triplet)", 1200, 0, 6);
@@ -460,27 +461,4 @@ void analyzer(TString filename, int ifile) {
 		hist2d_1_2->Write();
 		output->Write();
 		output->Close();
-		
-
-    // Create a canvas
-    // TCanvas* canvas = new TCanvas("canvas", "Title", 2400, 1800);
-		
-		// TLegend* leg = new TLegend(0.1,0.7,0.3,0.9);
-		// leg->AddEntry(hist1, "PF-PF (PF ID, OS)","l");
-		// leg->AddEntry(hist2, "PF-PF (PF ID, SS)","l");
-		// leg->AddEntry(hist3, "LP-LP (LP ID, OS)","l");
-		// leg->AddEntry(hist4, "LP-LP (LP ID, SS)","l");
-
-    // Draw histograms
-    // hist3->Draw();
-    // hist4->SetLineColor(2);
-    // hist4->Draw("SAME");
-		// hist1->SetLineColor(6);
-    // hist1->Draw("SAME");
-		// hist2->SetLineColor(8);
-    // hist2->Draw("SAME");
-		// leg->Draw();
-
-    // Display the canvas
-    // canvas->Print("test.png");
 }
