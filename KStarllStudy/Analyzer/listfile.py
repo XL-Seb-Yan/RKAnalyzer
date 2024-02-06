@@ -2,7 +2,7 @@ import os
 import glob
 
 # Replace 'your_directory_path' with the actual path of the directory containing the .root files
-directory_path = '/eos/home-x/xuyan/RKProj/RKAnalyzer/KStarllStudy/Data/KEE'
+directory_path = '/eos/home-x/xuyan/RKProj/RKAnalyzer/KStarllStudy/Data/BdToK0starEE_preEE'
 
 # Use glob to find all .root files in the directory
 root_files = glob.glob(os.path.join(directory_path, '*.root'))

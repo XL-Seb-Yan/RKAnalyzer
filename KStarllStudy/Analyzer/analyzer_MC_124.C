@@ -47,7 +47,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 										TH1F* hist2_1, TH1F* hist2_2, TH1F* hist2_3, TH1F* hist2_4, 
 										TH2F* hist2d_1_1, TH2F* hist2d_1_2,
 										TString filename,
-										int ifile) {
+										int mode, int ifile) {
     // Open the ROOT file
     TFile* file = TFile::Open(filename);
     if(!file || file->IsZombie()) {
@@ -108,6 +108,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
     outputTree->Branch("BToKEE_iso04dca_l1", &output_BToKEE_iso04dca_l1, "BToKEE_iso04dca_l1/F");
     outputTree->Branch("BToKEE_iso04dca_l2", &output_BToKEE_iso04dca_l2, "BToKEE_iso04dca_l2/F");
     outputTree->Branch("BToKEE_iso04dca_k", &output_BToKEE_iso04dca_k, "BToKEE_iso04dca_k/F");
+		
 		TTreeReader reader(tree);
 
 		TTreeReaderArray<Float_t> BToKEE_mass(reader, "BToKEE_mass");
@@ -170,7 +171,19 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		TTreeReaderArray<Float_t> PV_x(reader, "PV_x");
 		TTreeReaderArray<Float_t> PV_y(reader, "PV_y");
 		TTreeReaderArray<Float_t> PV_z(reader, "PV_z");
-			
+		
+		// TTreeReaderValue<Int_t> nGenPart(reader, "nGenPart");
+		TTreeReaderValue<UInt_t> nGenPart(reader, "nGenPart");
+		TTreeReaderArray<Float_t> GenPart_pt(reader, "GenPart_pt");
+		TTreeReaderArray<Float_t> GenPart_eta(reader, "GenPart_eta");
+		TTreeReaderArray<Float_t> GenPart_phi(reader, "GenPart_phi");
+		TTreeReaderArray<Float_t> GenPart_mass(reader, "GenPart_mass");
+		// TTreeReaderArray<Short_t> GenPart_genPartIdxMother(reader, "GenPart_genPartIdxMother");
+		TTreeReaderArray<Int_t> GenPart_genPartIdxMother(reader, "GenPart_genPartIdxMother");
+		TTreeReaderArray<Int_t> GenPart_pdgId(reader, "GenPart_pdgId");
+		TTreeReaderArray<Int_t> GenPart_status(reader, "GenPart_status");
+		
+		
 		TTreeReaderValue<UChar_t> L1_DoubleEG11_er1p2_dR_Max0p6(reader, "L1_DoubleEG11_er1p2_dR_Max0p6");
 		TTreeReaderValue<UChar_t> L1_DoubleEG10p5_er1p2_dR_Max0p6(reader, "L1_DoubleEG10p5_er1p2_dR_Max0p6");
 		TTreeReaderValue<UChar_t> L1_DoubleEG10_er1p2_dR_Max0p6(reader, "L1_DoubleEG10_er1p2_dR_Max0p6");
@@ -201,18 +214,21 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		TTreeReaderValue<UChar_t> HLT_DoubleEle4p5_eta1p22_mMax6(reader, "HLT_DoubleEle4p5_eta1p22_mMax6");
 		TTreeReaderValue<UChar_t> HLT_DoubleEle4_eta1p22_mMax6(reader, "HLT_DoubleEle4_eta1p22_mMax6");
 
+		TH1F* dR_l = new TH1F("dR_l", "dR_l", 500, 0, 0.5);
+		TH1F* dR_K = new TH1F("dR_K", "dR_K", 500, 0, 0.5);
+		int counter1, counter2, counter3, counter4, counter5, counter6;
     // Loop through the entries
     Long64_t numEntries = tree->GetEntries();
+		cout<<"Total: "<<numEntries<<endl;
     for(Long64_t ievt = 0; ievt < numEntries; ++ievt) {
 		// for(Long64_t ievt = 0; ievt < 100; ++ievt) {
+				counter1++;
 				reader.SetLocalEntry(ievt);
         if(ievt % 1000 == 0) {
             std::cout << "Processing " << static_cast<double>(ievt) / numEntries << std::endl;
         }
 
         tree->GetEntry(ievt);
-				
-				int nTriplets = 0, nQuadruplets = 0;
 				
 				std::vector<int> HLT_values;
 				std::vector<int> L1_values;
@@ -275,12 +291,54 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 						// }
 				// }
 				
+				// Locate desired electron and Kaon
+				std::vector<TLorentzVector> genEle_p4s;
+				std::vector<TLorentzVector> genHad_p4s;
+				for(int igen = 0; igen < *nGenPart; igen++){
+						// cout<<GenPart_pdgId[igen]<<" "<<GenPart_status[igen]<<" "<<GenPart_genPartIdxMother[igen]<<" "<<GenPart_pdgId[GenPart_genPartIdxMother[igen]]<<endl;
+						if(GenPart_status[igen] != 1) continue;
+						if(abs(GenPart_pdgId[igen]) != 11 && abs(GenPart_pdgId[igen]) != 321 && abs(GenPart_pdgId[igen]) != 211) continue;
+						TLorentzVector genp4;
+						if(abs(GenPart_pdgId[igen]) == 11 && (abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 443 || abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 521 - mode)){
+								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.000511);
+								genEle_p4s.push_back(genp4);
+						}
+						if(abs(GenPart_pdgId[igen]) == 321 && mode == 0 && abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 521){
+								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.493677);
+								genHad_p4s.push_back(genp4);
+						}
+						if(abs(GenPart_pdgId[igen]) == 321 && mode == 10 && abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 313 && abs(GenPart_pdgId[GenPart_genPartIdxMother[GenPart_genPartIdxMother[igen]]]) == 511){
+								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.493677);
+								genHad_p4s.push_back(genp4);
+						}
+						if(abs(GenPart_pdgId[igen]) == 211 && mode == 10 && abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 313 && abs(GenPart_pdgId[GenPart_genPartIdxMother[GenPart_genPartIdxMother[igen]]]) == 511){
+								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.13957);
+								genHad_p4s.push_back(genp4);
+						}
+				}
+				if(mode == 10 && (genEle_p4s.size() < 2 || genHad_p4s.size() < 2)) {
+					cout<<genEle_p4s.size()<<" "<<genHad_p4s.size()<<endl; 
+					// for(int igen = 0; igen < *nGenPart; igen++){
+						// cout<<GenPart_pdgId[igen]<<" "<<GenPart_status[igen]<<" "<<GenPart_pt[igen]<<" "<<GenPart_eta[igen]<<" "<<GenPart_phi[igen]<<" "<<GenPart_genPartIdxMother[igen]<<" "<<GenPart_pdgId[GenPart_genPartIdxMother[igen]]<<endl;
+					// }
+					continue;
+				}
+				if(mode == 0 && (genEle_p4s.size() < 2 || genHad_p4s.size() < 1)) {
+					cout<<genEle_p4s.size()<<" "<<genHad_p4s.size()<<endl; 
+					// for(int igen = 0; igen < *nGenPart; igen++){
+						// cout<<GenPart_pdgId[igen]<<" "<<GenPart_status[igen]<<" "<<GenPart_pt[igen]<<" "<<GenPart_eta[igen]<<" "<<GenPart_phi[igen]<<" "<<GenPart_genPartIdxMother[igen]<<" "<<GenPart_pdgId[GenPart_genPartIdxMother[igen]]<<endl;
+					// }
+					continue;
+				}
+				counter2++;
+				
 				std::set<float> unique_BToKEE_m;
 				std::set<float> unique_BToKEE_mll;
 				std::set<float> unique_BToKEE_noKstar_m;
 				std::set<float> unique_BToKEE_noKstar_mll;
 				
 				for(size_t iBKee = 0; iBKee < BToKEE_mass.GetSize(); ++iBKee) {
+						counter3++;
 						int l1_index = BToKEE_l1Idx[iBKee];
 						int l2_index = BToKEE_l2Idx[iBKee];
 						int k_index = BToKEE_kIdx[iBKee];
@@ -293,33 +351,69 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 						if(ProbeTracks_pt[k_index] < 0.5) {continue;}
 						if(abs(ProbeTracks_eta[k_index]) > 1.22) {continue;}
 						if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0 || BToKEE_mll_charge[iBKee] != 0) {continue;}
+						counter4++;
 						
-						nTriplets++;
-						
-						bool isPartOfBKStar = false;
-						for(size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
-								if((BToKsEE_l1_idx[iBKStaree] == l1_index && 
-									 BToKsEE_l2_idx[iBKStaree] == l2_index &&
-									 BToKsEE_trk1_idx[iBKStaree] == k_index) ||
-									(BToKsEE_l1_idx[iBKStaree] == l1_index && 
-									 BToKsEE_l2_idx[iBKStaree] == l2_index &&
-									 BToKsEE_trk2_idx[iBKStaree] == k_index) ||
-									(BToKsEE_l1_idx[iBKStaree] == l2_index && 
-									 BToKsEE_l2_idx[iBKStaree] == l1_index &&
-									 BToKsEE_trk1_idx[iBKStaree] == k_index) ||
-									(BToKsEE_l1_idx[iBKStaree] == l2_index && 
-									 BToKsEE_l2_idx[iBKStaree] == l1_index &&
-									 BToKsEE_trk2_idx[iBKStaree] == k_index)) {
-										 isPartOfBKStar = true;
-										 break;
-									 }
+						// GEN matching
+						TLorentzVector l1p4, l2p4, Kp4;
+						l1p4.SetPtEtaPhiM(Electron_pt[l1_index],Electron_eta[l1_index],Electron_phi[l1_index],0.000511);
+						l2p4.SetPtEtaPhiM(Electron_pt[l2_index],Electron_eta[l2_index],Electron_phi[l2_index],0.000511);
+						Kp4.SetPtEtaPhiM(ProbeTracks_pt[k_index],ProbeTracks_eta[k_index],ProbeTracks_phi[k_index],0.493677);
+						bool isMatched_ele = false;
+						bool isMatched_K = false;
+						std::vector<bool> matchingbit; 
+						dR_l->Fill(l1p4.DeltaR(genEle_p4s[0]));
+						dR_l->Fill(l1p4.DeltaR(genEle_p4s[1]));
+						dR_l->Fill(l2p4.DeltaR(genEle_p4s[0]));
+						dR_l->Fill(l2p4.DeltaR(genEle_p4s[1]));
+						dR_K->Fill(Kp4.DeltaR(genHad_p4s[0]));
+						for(int i=0; i<genEle_p4s.size();i++){
+							if(l1p4.DeltaR(genEle_p4s[i]) < 0.03) {
+								matchingbit.push_back(1);
+							}
+							else{
+								matchingbit.push_back(0);
+							}
 						}
+						for(int i=0; i<genEle_p4s.size();i++){
+							if(l2p4.DeltaR(genEle_p4s[i]) < 0.03) {
+								matchingbit.push_back(1);
+							}
+							else{
+								matchingbit.push_back(0);
+							}
+						}
+						if((matchingbit[0] && matchingbit[3]) || (matchingbit[1] && matchingbit[2])) isMatched_ele = true;
+						// if((matchingbit[0] + matchingbit[3]) + (matchingbit[1] + matchingbit[2]) > 1) isMatched_ele = true;
+						for(int i=0; i<genHad_p4s.size();i++){
+							if(Kp4.DeltaR(genHad_p4s[i]) < 0.03) isMatched_K = true;
+						}
+						if(!isMatched_ele || !isMatched_K) continue;
+						counter5++;
+						
+						// bool isPartOfBKStar = false;
+						// for(size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
+								// if((BToKsEE_l1_idx[iBKStaree] == l1_index && 
+									 // BToKsEE_l2_idx[iBKStaree] == l2_index &&
+									 // BToKsEE_trk1_idx[iBKStaree] == k_index) ||
+									// (BToKsEE_l1_idx[iBKStaree] == l1_index && 
+									 // BToKsEE_l2_idx[iBKStaree] == l2_index &&
+									 // BToKsEE_trk2_idx[iBKStaree] == k_index) ||
+									// (BToKsEE_l1_idx[iBKStaree] == l2_index && 
+									 // BToKsEE_l2_idx[iBKStaree] == l1_index &&
+									 // BToKsEE_trk1_idx[iBKStaree] == k_index) ||
+									// (BToKsEE_l1_idx[iBKStaree] == l2_index && 
+									 // BToKsEE_l2_idx[iBKStaree] == l1_index &&
+									 // BToKsEE_trk2_idx[iBKStaree] == k_index)) {
+										 // isPartOfBKStar = true;
+										 // break;
+									 // }
+						// }
 						 
 						int isize = -99;
-						
 						isize = unique_BToKEE_m.size();
 						unique_BToKEE_m.insert(BToKEE_fit_mass[iBKee]);
 						if(unique_BToKEE_m.size() > isize){
+							counter6++;
 							ROOT::Math::XYZVector BVtxVector(BToKEE_vtx_x[iBKee] - PV_x[0], BToKEE_vtx_y[iBKee] - PV_y[0], BToKEE_vtx_z[iBKee] - PV_z[0]);
 							TLorentzVector l1p4, l2p4, Kp4;
 							l1p4.SetPtEtaPhiM(BToKEE_fit_l1_pt[iBKee], BToKEE_fit_l1_eta[iBKee], BToKEE_fit_l1_phi[iBKee], 0.000511);
@@ -331,10 +425,10 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 							ROOT::Math::XYZVector Kp3Vector(Kp4.Px(),Kp4.Py(),Kp4.Pz());
 							ROOT::Math::XYZVector unitBVtxVector = BVtxVector / BVtxVector.R();
 							float asym = ((llp3Vector.Cross(unitBVtxVector)).R() - (Kp3Vector.Cross(unitBVtxVector)).R()) / ((llp3Vector.Cross(unitBVtxVector)).R() + (Kp3Vector.Cross(unitBVtxVector)).R());
-							// if(asym > 0.4) continue;
 							
 							hist1_1->Fill(BToKEE_fit_mass[iBKee]); 
 							hist1_2->Fill(BToKEE_mll_fullfit[iBKee]);
+							// hist1_2->Fill(BToKEE_mll_raw[iBKee]);
 							output_BToKEE_mll_fullfit_norm = BToKEE_mll_fullfit[iBKee] / BToKEE_fit_mass[iBKee];
 							hist1_3->Fill(Electron_pt[l1_index]);
 							hist1_4->Fill(Electron_pt[l2_index]);
@@ -423,7 +517,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 						// }
 				}
 				
-				
+				/*
 				std::set<float> unique_BToKsEE_m;
 				std::set<float> unique_Ks_m;
 				
@@ -444,6 +538,63 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 					if(abs(ProbeTracks_eta[trk1_index]) > 1.22 || abs(ProbeTracks_eta[trk2_index]) > 1.22) {continue;}
 					if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0) {continue;}
 					
+					// GEN matching
+					TLorentzVector l1p4, l2p4, trk1p4, trk2p4;
+					l1p4.SetPtEtaPhiM(Electron_pt[l1_index],Electron_eta[l1_index],Electron_phi[l1_index],0.000511);
+					l2p4.SetPtEtaPhiM(Electron_pt[l2_index],Electron_eta[l2_index],Electron_phi[l2_index],0.000511);
+					trk1p4.SetPtEtaPhiM(ProbeTracks_pt[trk1_index],ProbeTracks_eta[trk1_index],ProbeTracks_phi[trk1_index],0.493677);
+					trk2p4.SetPtEtaPhiM(ProbeTracks_pt[trk2_index],ProbeTracks_eta[trk2_index],ProbeTracks_phi[trk2_index],0.493677);
+					bool isMatched_ele = false;
+					bool isMatched_trk = false;
+					std::vector<int> matchingbit_ele; 
+					std::vector<int> matchingbit_trk1; 
+					std::vector<int> matchingbit_trk2; 
+					for(int i=0; i<genEle_p4s.size();i++){
+						if(l1p4.DeltaR(genEle_p4s[i]) < 0.03) {
+							matchingbit_ele.push_back(1);
+						}
+						else{
+							matchingbit_ele.push_back(0);
+						}
+					}
+					for(int i=0; i<genEle_p4s.size();i++){
+						if(l2p4.DeltaR(genEle_p4s[i]) < 0.03) {
+							matchingbit_ele.push_back(1);
+						}
+						else{
+							matchingbit_ele.push_back(0);
+						}
+					}
+					if((matchingbit_ele[0] && matchingbit_ele[3]) || (matchingbit_ele[1] && matchingbit_ele[2])) isMatched_ele = true;
+					
+					for(int i=0; i<genHad_p4s.size();i++){
+						if(trk1p4.DeltaR(genHad_p4s[i]) < 0.03) {
+							matchingbit_trk1.push_back(1);
+						}
+						else{
+							matchingbit_trk1.push_back(0);
+						}
+					}
+					for(int i=0; i<genHad_p4s.size();i++){
+						if(trk2p4.DeltaR(genHad_p4s[i]) < 0.03) {
+							matchingbit_trk2.push_back(1);
+						}
+						else{
+							matchingbit_trk2.push_back(0);
+						}
+					}
+					int sumtrk1 = 0;
+					int sumtrk2 = 0;
+					for(int i=0; i<matchingbit_trk1.size();i++){
+						sumtrk1+=matchingbit_trk1[i];
+					}
+					for(int i=0; i<matchingbit_trk2.size();i++){
+						sumtrk2+=matchingbit_trk2[i];
+					}
+					if(sumtrk1 > 0 && sumtrk2 > 0) isMatched_trk = true;
+					
+					if(!isMatched_ele || !isMatched_trk) continue;
+					
 					nQuadruplets++;
 					
 					int isize_BToKsEE = unique_BToKsEE_m.size();
@@ -460,13 +611,31 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 					}
 				}
 				hist2d_1_2->Fill(nTriplets, nQuadruplets, 1);
-		}
-    // Close the file
+				*/
+		}//end event loop
+		
+		cout<<"counters: "<<counter1<<" "<<counter2<<" "<<counter3<<" "<<counter4<<" "<<counter5<<" "<<counter6<<endl;
+		
+		
+    
+		// Create a canvas
+		TCanvas* canvas = new TCanvas("canvas", "Title", 2400, 1800);
+
+		dR_l->Draw();
+		dR_K->SetLineColor(2);
+		dR_K->Draw("SAME");
+	
+		canvas->SetLogy();
+		canvas->Print("test.png");
+		
+		outputFile->Write();
+		outputFile->Close();
+		// Close the file
     file->Close();
 		
 }
 
-void analyzer_Data(TString filename, int ifile) {
+void analyzer_MC_124(TString filename, int ifile, int mode) {
     // Create histograms to store muon pt values
     TH1F* hist1_1 = new TH1F("hist1_1", "B mass (all triplet)", 1000, 4.2, 6.2);
 		TH1F* hist1_2 = new TH1F("hist1_2", "ll mass (all triplet)", 1200, 0, 6);
@@ -509,7 +678,7 @@ void analyzer_Data(TString filename, int ifile) {
 									hist2_1, hist2_2, hist2_3, hist2_4, 
 									hist2d_1_1, hist2d_1_2, 
 									filename,
-									ifile);
+									mode, ifile);
 		
 		TString outname = "outputHits_" + std::to_string(ifile) + ".root";
 		TFile* output = new TFile(outname,"RECREATE");
