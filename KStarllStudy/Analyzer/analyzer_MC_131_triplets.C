@@ -244,7 +244,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 
 		TH1F* dR_l = new TH1F("dR_l", "dR_l", 500, 0, 0.5);
 		TH1F* dR_K = new TH1F("dR_K", "dR_K", 500, 0, 0.5);
-		int counter1, counter2, counter3, counter4, counter5, counter6;
+		int counter1=0, counter2=0, counter3=0, counter4=0, counter5=0, counter6=0;
     // Loop through the entries
     Long64_t numEntries = tree->GetEntries();
 		cout<<"Total: "<<numEntries<<endl;
@@ -381,6 +381,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				counter2++;
 				
 				int iB_matched = -99;
+				bool isMatched_ele_along = false;
 				float min_match_K = 999;
 				for(size_t iB = 0; iB < BToKEE_mass.GetSize(); ++iB) {
 					int l1_index = BToKEE_l1Idx[iB];
@@ -388,50 +389,65 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 					int k_index = BToKEE_kIdx[iB];
 					
 					// GEN matching
-					TLorentzVector l1p4, l2p4, Kp4;
+					TLorentzVector l1p4, l2p4, kp4;
 					l1p4.SetPtEtaPhiM(Electron_pt[l1_index],Electron_eta[l1_index],Electron_phi[l1_index],0.000511);
 					l2p4.SetPtEtaPhiM(Electron_pt[l2_index],Electron_eta[l2_index],Electron_phi[l2_index],0.000511);
-					Kp4.SetPtEtaPhiM(ProbeTracks_pt[k_index],ProbeTracks_eta[k_index],ProbeTracks_phi[k_index],0.493677);
+					kp4.SetPtEtaPhiM(ProbeTracks_pt[k_index],ProbeTracks_eta[k_index],ProbeTracks_phi[k_index],0.493677);
 					bool isMatched_ele = false;
-					bool isMatched_K = false;
-					std::vector<bool> matchingbit; 
+					bool isMatched_trk = false;
+					std::vector<int> matchingbit_ele; 
+					std::vector<int> matchingbit_trk; 
 					for(int i=0; i<genEle_p4s.size();i++){
 						if(l1p4.DeltaR(genEle_p4s[i]) < 0.03) {
-							matchingbit.push_back(1);
+							matchingbit_ele.push_back(1);
 						}
 						else{
-							matchingbit.push_back(0);
+							matchingbit_ele.push_back(0);
 						}
 					}
 					for(int i=0; i<genEle_p4s.size();i++){
 						if(l2p4.DeltaR(genEle_p4s[i]) < 0.03) {
-							matchingbit.push_back(1);
+							matchingbit_ele.push_back(1);
 						}
 						else{
-							matchingbit.push_back(0);
+							matchingbit_ele.push_back(0);
 						}
 					}
-					if((matchingbit[0] && matchingbit[3]) || (matchingbit[1] && matchingbit[2])) isMatched_ele = true;
-					if(Kp4.DeltaR(genHad_p4s[0]) < 0.03) isMatched_K = true;
-					if(!isMatched_ele || !isMatched_K) continue;
-					if(Kp4.DeltaR(genHad_p4s[0]) < min_match_K){
+					if((matchingbit_ele[0] && matchingbit_ele[3]) || (matchingbit_ele[1] && matchingbit_ele[2])) isMatched_ele = true;
+									
+					for(int i=0; i<genHad_p4s.size();i++){
+						if(kp4.DeltaR(genHad_p4s[i]) < 0.03) {
+							matchingbit_trk.push_back(1);
+						}
+						else{
+							matchingbit_trk.push_back(0);
+						}
+					}
+					if(matchingbit_trk[0]) isMatched_trk = true;
+					isMatched_ele_along = isMatched_ele;
+					if(!isMatched_ele || !isMatched_trk) continue;
+					if(kp4.DeltaR(genHad_p4s[0]) < min_match_K){
 						iB_matched = iB;
-						min_match_K = Kp4.DeltaR(genHad_p4s[0]);
+						min_match_K = kp4.DeltaR(genHad_p4s[0]);
 					}
 				}
+				
+			if(isMatched_ele_along) counter5++;
 			
 			// Now iB_matched is the matched BCand
 			if(iB_matched < 0) continue;
+			counter3++;
 			int l1_index = BToKEE_l1Idx[iB_matched];
 			int l2_index = BToKEE_l2Idx[iB_matched];
 			int k_index = BToKEE_kIdx[iB_matched];
 			if(BToKEE_fit_mass[iB_matched] < 4.7 || BToKEE_fit_mass[iB_matched] > 5.7) continue;
-			// if(BToKEE_mll_fullfit[iB_matched]*BToKEE_mll_fullfit[iB_matched] < 1.1 || BToKEE_mll_fullfit[iB_matched]*BToKEE_mll_fullfit[iB_matched] > 6.0) continue;		
+			if(BToKEE_mll_fullfit[iB_matched]*BToKEE_mll_fullfit[iB_matched] < 1.1 || BToKEE_mll_fullfit[iB_matched]*BToKEE_mll_fullfit[iB_matched] > 6.0) continue;		
 			if(Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
 			if(abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
 			if(ProbeTracks_pt[k_index] < 0.5) {continue;}
 			if(abs(ProbeTracks_eta[k_index]) > 1.22) {continue;}
 			if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index] || Electron_PFEleMvaID_RetrainedRawValue[l1_index] < 0 || Electron_PFEleMvaID_RetrainedRawValue[l2_index] < 0 || BToKEE_mll_charge[iB_matched] != 0) {continue;}
+			counter4++;
 			
 			
 			TLorentzVector l1p4, l2p4, Kp4, Bp4;
@@ -528,7 +544,7 @@ void analyzer_MC_131_triplets(TString filename, int ifile, int mode) {
 		TH1F* hist1_13 = new TH1F("hist1_13", "cos #alpha_{3D}", 1000, -1,1);
 		TH1F* hist1_14 = new TH1F("hist1_14", "Prob(SV fit)", 1000, 0,1);
 		TH1F* hist1_15 = new TH1F("hist1_15", "sig(Lxy)", 1000, 0,500);
-		TH1F* hist1_16 = new TH1F("hist1_16", "#Delta R (ll)", 1000, 0,5);
+		TH1F* hist1_16 = new TH1F("hist1_16", "#Delta R (ll)", 1000, 0,3);
 		TH1F* hist1_17 = new TH1F("hist1_17", "Momentum asymmetry ll-trk1", 1000, -1,1);
 		TH1F* hist1_18 = new TH1F("hist1_18", "Momentum asymmetry ll-trk2", 1000, -1,1);
 		TH1F* hist1_19 = new TH1F("hist1_19", "Momentum asymmetry ll-Ks", 1000, -1,1);
@@ -538,17 +554,17 @@ void analyzer_MC_131_triplets(TString filename, int ifile, int mode) {
 		TH1F* hist1_23 = new TH1F("hist1_23", "Isolation trk2_iso04", 1000, 0,100);
 		TH1F* hist1_24 = new TH1F("hist1_24", "Impact parameter trk1", 2000, 0,100);
 		TH1F* hist1_25 = new TH1F("hist1_25", "Impact parameter trk2", 2000, 0,100);
-		TH1F* hist1_26 = new TH1F("hist1_26", "#Delta R (l1-trk1)", 1000, 0,5);
-		TH1F* hist1_27 = new TH1F("hist1_27", "#Delta R (l1-trk2)", 1000, 0,5);
-		TH1F* hist1_28 = new TH1F("hist1_28", "#Delta R (l2-trk1)", 1000, 0,5);
-		TH1F* hist1_29 = new TH1F("hist1_29", "#Delta R (l2-trk2)", 1000, 0,5);
-		TH1F* hist1_30 = new TH1F("hist1_30", "#Delta R (trk-trk)", 1000, 0,5);
+		TH1F* hist1_26 = new TH1F("hist1_26", "#Delta R (l1-trk1)", 1000, 0,4);
+		TH1F* hist1_27 = new TH1F("hist1_27", "#Delta R (l1-trk2)", 1000, 0,4);
+		TH1F* hist1_28 = new TH1F("hist1_28", "#Delta R (l2-trk1)", 1000, 0,4);
+		TH1F* hist1_29 = new TH1F("hist1_29", "#Delta R (l2-trk2)", 1000, 0,4);
+		TH1F* hist1_30 = new TH1F("hist1_30", "#Delta R (trk-trk)", 1000, 0,4);
 		TH1F* hist1_31 = new TH1F("hist1_31", "cos 2D fit", 1000, -1,1);
-		TH1F* hist1_32 = new TH1F("hist1_32", "#Delta z (l1-trk1)", 1000, 0,10);
-		TH1F* hist1_33 = new TH1F("hist1_33", "#Delta z (l1-trk2)", 1000, 0,10);
-		TH1F* hist1_34 = new TH1F("hist1_34", "#Delta z (l2-trk1)", 1000, 0,10);
-		TH1F* hist1_35 = new TH1F("hist1_35", "#Delta z (l2-trk2)", 1000, 0,10);
-		TH1F* hist1_36 = new TH1F("hist1_36", "#Delta z (trk-trk)", 1000, 0,10);
+		TH1F* hist1_32 = new TH1F("hist1_32", "#Delta z (l1-trk1)", 1000, -3,3);
+		TH1F* hist1_33 = new TH1F("hist1_33", "#Delta z (l1-trk2)", 1000, -3,3);
+		TH1F* hist1_34 = new TH1F("hist1_34", "#Delta z (l2-trk1)", 1000, -3,3);
+		TH1F* hist1_35 = new TH1F("hist1_35", "#Delta z (l2-trk2)", 1000, -3,3);
+		TH1F* hist1_36 = new TH1F("hist1_36", "#Delta z (trk-trk)", 1000, -3,3);
 		
 		
 		TH2F* hist2d_1_1  = new TH2F("hist2d_1_1","Trigger map",15,3.75,11.25,13,3.75,10.25);
@@ -556,7 +572,7 @@ void analyzer_MC_131_triplets(TString filename, int ifile, int mode) {
 		FillHistogram(hist1_1, hist1_2, hist1_3, hist1_4, hist1_5, hist1_6, hist1_7, hist1_8,hist1_9, hist1_10,
 									hist1_11, hist1_12, hist1_13, hist1_14, hist1_15, hist1_16, hist1_17, hist1_18, hist1_19, hist1_20,
 									hist1_21, hist1_22, hist1_23, hist1_24, hist1_25, hist1_26, hist1_27, hist1_28, hist1_29, hist1_30,
-										hist1_21, hist1_22, hist1_33, hist1_34, hist1_35, hist1_36,
+									hist1_31, hist1_32, hist1_33, hist1_34, hist1_35, hist1_36,
 									hist2d_1_1, 
 									filename,
 									mode, ifile);

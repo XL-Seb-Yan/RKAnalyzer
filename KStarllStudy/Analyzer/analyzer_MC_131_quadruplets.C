@@ -253,7 +253,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 
 		TH1F* dR_l = new TH1F("dR_l", "dR_l", 500, 0, 0.5);
 		TH1F* dR_K = new TH1F("dR_K", "dR_K", 500, 0, 0.5);
-		int counter1, counter2, counter3, counter4, counter5, counter6;
+		int counter1=0, counter2=0, counter3=0, counter4=0, counter5=0, counter6=0;
     // Loop through the entries
     Long64_t numEntries = tree->GetEntries();
 		cout<<"Total: "<<numEntries<<endl;
@@ -389,8 +389,12 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				}
 				counter2++;
 				
+				if(BToKsEE_mass.GetSize() > 0) counter6++;
+				
 				int iB_matched = -99;
+				bool isMatched_ele_along = false;
 				float min_match_K = 999;
+				int matchcount = 0;
 				for(size_t iB = 0; iB < BToKsEE_mass.GetSize(); ++iB) {
 					int l1_index = BToKsEE_l1_idx[iB];
 					int l2_index = BToKsEE_l2_idx[iB];
@@ -406,8 +410,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 					bool isMatched_ele = false;
 					bool isMatched_trk = false;
 					std::vector<int> matchingbit_ele; 
-					std::vector<int> matchingbit_trk1; 
-					std::vector<int> matchingbit_trk2; 
+					std::vector<int> matchingbit_trk; 
 					for(int i=0; i<genEle_p4s.size();i++){
 						if(l1p4.DeltaR(genEle_p4s[i]) < 0.03) {
 							matchingbit_ele.push_back(1);
@@ -428,27 +431,29 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 									
 					for(int i=0; i<genHad_p4s.size();i++){
 						if(trk1p4.DeltaR(genHad_p4s[i]) < 0.03) {
-							matchingbit_trk1.push_back(1);
+							matchingbit_trk.push_back(1);
 						}
 						else{
-							matchingbit_trk1.push_back(0);
+							matchingbit_trk.push_back(0);
 						}
 					}
 					for(int i=0; i<genHad_p4s.size();i++){
 						if(trk2p4.DeltaR(genHad_p4s[i]) < 0.03) {
-							matchingbit_trk2.push_back(1);
+							matchingbit_trk.push_back(1);
 						}
 						else{
-							matchingbit_trk2.push_back(0);
+							matchingbit_trk.push_back(0);
 						}
 					}
-					if((matchingbit_trk1[0] && matchingbit_trk2[1]) || (matchingbit_trk1[1] && matchingbit_trk2[0])) isMatched_trk = true;
+					if((matchingbit_trk[0] && matchingbit_trk[3]) || (matchingbit_trk[1] && matchingbit_trk[2])) isMatched_trk = true;
+					isMatched_ele_along = isMatched_ele;
 					if(!isMatched_ele || !isMatched_trk) continue;
-					// if(Kp4.DeltaR(genHad_p4s[0]) < min_match_K){
-						// iB_matched = iB;
-						// min_match_K = Kp4.DeltaR(genHad_p4s[0]);
-					// }
+					iB_matched = iB;
+					matchcount++;
 				}
+			if(isMatched_ele_along) counter5++;
+			
+			// if(matchcount > 1) cout<<matchcount<<endl;
 			
 			// Now iB_matched is the matched BCand
 			if(iB_matched < 0) continue;
@@ -458,7 +463,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 			int trk1_index = BToKsEE_trk1_idx[iB_matched];
 			int trk2_index = BToKsEE_trk2_idx[iB_matched];
 			if(BToKsEE_fit_mass[iB_matched] < 4.7 || BToKsEE_fit_mass[iB_matched] > 5.7) continue;
-			// if(BToKsEE_mll_fullfit[iB_matched]*BToKsEE_mll_fullfit[iB_matched] < 1.1 || BToKsEE_mll_fullfit[iB_matched]*BToKsEE_mll_fullfit[iB_matched] > 6.0) continue;		
+			if(BToKsEE_mll_fullfit[iB_matched]*BToKsEE_mll_fullfit[iB_matched] < 1.1 || BToKsEE_mll_fullfit[iB_matched]*BToKsEE_mll_fullfit[iB_matched] > 6.0) continue;		
 			if(Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
 			if(abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
 			if(ProbeTracks_pt[trk1_index] < 0.5 || ProbeTracks_pt[trk2_index] < 0.5) {continue;}
@@ -492,7 +497,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 			hist1_7->Fill(ProbeTracks_pt[trk1_index]); 
 			hist1_8->Fill(ProbeTracks_pt[trk2_index]); 
 			hist1_9->Fill(ProbeTracks_pt[trk1_index] / BToKsEE_fit_mass[iB_matched]); output_BCand_fit_trk1_pt = ProbeTracks_pt[trk1_index] / BToKsEE_fit_mass[iB_matched];
-			hist1_9->Fill(ProbeTracks_pt[trk2_index] / BToKsEE_fit_mass[iB_matched]); output_BCand_fit_trk2_pt = ProbeTracks_pt[trk2_index] / BToKsEE_fit_mass[iB_matched];
+			hist1_10->Fill(ProbeTracks_pt[trk2_index] / BToKsEE_fit_mass[iB_matched]); output_BCand_fit_trk2_pt = ProbeTracks_pt[trk2_index] / BToKsEE_fit_mass[iB_matched];
 			hist1_11->Fill(BToKsEE_fit_pt[iB_matched]);
 			hist1_12->Fill(BToKsEE_fit_pt[iB_matched] / BToKsEE_fit_mass[iB_matched]); output_BCand_fit_pt_norm = BToKsEE_fit_pt[iB_matched] / BToKsEE_fit_mass[iB_matched];
 			hist1_13->Fill(BVtxVector.Dot(Bp3Vector) / (BVtxVector.R() * Bp3Vector.R())); output_BCand_cosAlpha3D = BVtxVector.Dot(Bp3Vector) / (BVtxVector.R() * Bp3Vector.R());
@@ -563,7 +568,7 @@ void analyzer_MC_131_quadruplets(TString filename, int ifile, int mode) {
 		TH1F* hist1_13 = new TH1F("hist1_13", "cos #alpha_{3D}", 1000, -1,1);
 		TH1F* hist1_14 = new TH1F("hist1_14", "Prob(SV fit)", 1000, 0,1);
 		TH1F* hist1_15 = new TH1F("hist1_15", "sig(Lxy)", 1000, 0,500);
-		TH1F* hist1_16 = new TH1F("hist1_16", "#Delta R (ll)", 1000, 0,5);
+		TH1F* hist1_16 = new TH1F("hist1_16", "#Delta R (ll)", 1000, 0,3);
 		TH1F* hist1_17 = new TH1F("hist1_17", "Momentum asymmetry ll-trk1", 1000, -1,1);
 		TH1F* hist1_18 = new TH1F("hist1_18", "Momentum asymmetry ll-trk2", 1000, -1,1);
 		TH1F* hist1_19 = new TH1F("hist1_19", "Momentum asymmetry ll-Ks", 1000, -1,1);
@@ -571,26 +576,26 @@ void analyzer_MC_131_quadruplets(TString filename, int ifile, int mode) {
 		TH1F* hist1_21 = new TH1F("hist1_21", "Isolation l2_iso04", 1000, 0,100);
 		TH1F* hist1_22 = new TH1F("hist1_22", "Isolation trk1_iso04", 1000, 0,100);
 		TH1F* hist1_23 = new TH1F("hist1_23", "Isolation trk2_iso04", 1000, 0,100);
-		TH1F* hist1_24 = new TH1F("hist1_24", "Impact parameter trk1", 2000, 0,100);
-		TH1F* hist1_25 = new TH1F("hist1_25", "Impact parameter trk2", 2000, 0,100);
-		TH1F* hist1_26 = new TH1F("hist1_26", "#Delta R (l1-trk1)", 1000, 0,5);
-		TH1F* hist1_27 = new TH1F("hist1_27", "#Delta R (l1-trk2)", 1000, 0,5);
-		TH1F* hist1_28 = new TH1F("hist1_28", "#Delta R (l2-trk1)", 1000, 0,5);
-		TH1F* hist1_29 = new TH1F("hist1_29", "#Delta R (l2-trk2)", 1000, 0,5);
-		TH1F* hist1_30 = new TH1F("hist1_30", "#Delta R (trk-trk)", 1000, 0,5);
+		TH1F* hist1_24 = new TH1F("hist1_24", "Impact parameter trk1", 1000, 0,60);
+		TH1F* hist1_25 = new TH1F("hist1_25", "Impact parameter trk2", 1000, 0,60);
+		TH1F* hist1_26 = new TH1F("hist1_26", "#Delta R (l1-trk1)", 1000, 0,4);
+		TH1F* hist1_27 = new TH1F("hist1_27", "#Delta R (l1-trk2)", 1000, 0,4);
+		TH1F* hist1_28 = new TH1F("hist1_28", "#Delta R (l2-trk1)", 1000, 0,4);
+		TH1F* hist1_29 = new TH1F("hist1_29", "#Delta R (l2-trk2)", 1000, 0,4);
+		TH1F* hist1_30 = new TH1F("hist1_30", "#Delta R (trk-trk)", 1000, 0,4);
 		TH1F* hist1_31 = new TH1F("hist1_31", "cos 2D fit", 1000, -1,1);
-		TH1F* hist1_32 = new TH1F("hist1_32", "#Delta z (l1-trk1)", 1000, 0,10);
-		TH1F* hist1_33 = new TH1F("hist1_33", "#Delta z (l1-trk2)", 1000, 0,10);
-		TH1F* hist1_34 = new TH1F("hist1_34", "#Delta z (l2-trk1)", 1000, 0,10);
-		TH1F* hist1_35 = new TH1F("hist1_35", "#Delta z (l2-trk2)", 1000, 0,10);
-		TH1F* hist1_36 = new TH1F("hist1_36", "#Delta z (trk-trk)", 1000, 0,10);
+		TH1F* hist1_32 = new TH1F("hist1_32", "#Delta z (l1-trk1)", 1000, -3,3);
+		TH1F* hist1_33 = new TH1F("hist1_33", "#Delta z (l1-trk2)", 1000, -3,3);
+		TH1F* hist1_34 = new TH1F("hist1_34", "#Delta z (l2-trk1)", 1000, -3,3);
+		TH1F* hist1_35 = new TH1F("hist1_35", "#Delta z (l2-trk2)", 1000, -3,3);
+		TH1F* hist1_36 = new TH1F("hist1_36", "#Delta z (trk-trk)", 1000, -3,3);
 		
 		TH2F* hist2d_1_1  = new TH2F("hist2d_1_1","Trigger map",15,3.75,11.25,13,3.75,10.25);
 
 		FillHistogram(hist1_1, hist1_2, hist1_3, hist1_4, hist1_5, hist1_6, hist1_7, hist1_8,hist1_9, hist1_10,
 									hist1_11, hist1_12, hist1_13, hist1_14, hist1_15, hist1_16, hist1_17, hist1_18, hist1_19, hist1_20,
 									hist1_21, hist1_22, hist1_23, hist1_24, hist1_25, hist1_26, hist1_27, hist1_28, hist1_29, hist1_30,
-										hist1_21, hist1_22, hist1_33, hist1_34, hist1_35, hist1_36,
+									hist1_31, hist1_32, hist1_33, hist1_34, hist1_35, hist1_36,
 									hist2d_1_1, 
 									filename,
 									mode, ifile);
