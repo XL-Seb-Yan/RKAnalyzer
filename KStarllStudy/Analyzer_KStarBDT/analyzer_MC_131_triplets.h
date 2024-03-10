@@ -39,6 +39,8 @@
 #include <set>
 #include <vector>
 #include <iostream>
+#include <xgboost/c_api.h> 
+#include <cassert>
 #endif
 
 void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, TH1F* hist1_5, TH1F* hist1_6, TH1F* hist1_7, TH1F* hist1_8, TH1F* hist1_9, TH1F* hist1_10,
@@ -49,6 +51,13 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 										TH2F* hist2d_1_1,
 										TString filename,
 										int mode, int ifile) {
+											
+		// Open GBDT file
+		BoosterHandle h_booster;
+    DMatrixHandle h_test;
+		XGBoosterCreate(NULL, 0, &booster);
+		XGBoosterLoadModel(booster, "model.bin");
+											
     // Open the ROOT file
     TFile* file = TFile::Open(filename);
     if(!file || file->IsZombie()) {
@@ -193,6 +202,56 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		TTreeReaderArray<Float_t> BToKEE_l1_iso04(reader, "BToKEE_l1_iso04");
 		TTreeReaderArray<Float_t> BToKEE_l2_iso04(reader, "BToKEE_l2_iso04");
 		TTreeReaderArray<Float_t> BToKEE_k_iso04(reader, "BToKEE_k_iso04");
+		
+		TTreeReaderValue<Int_t> nBToKEE(reader, "nBToKEE");
+		TTreeReaderValue<Int_t> nBToKsEE(reader, "nBToKsEE");
+		TTreeReaderArray<Float_t> BToKsEE_mass(reader, "BToKsEE_mass");
+		TTreeReaderArray<Float_t> BToKsEE_fit_mass(reader, "BToKsEE_fit_mass");
+		TTreeReaderArray<Float_t> BToKsEE_fit_pt(reader, "BToKsEE_fit_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_eta(reader, "BToKsEE_fit_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_phi(reader, "BToKsEE_fit_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l1_pt(reader, "BToKsEE_fit_l1_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l1_eta(reader, "BToKsEE_fit_l1_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l1_phi(reader, "BToKsEE_fit_l1_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l2_pt(reader, "BToKsEE_fit_l2_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l2_eta(reader, "BToKsEE_fit_l2_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l2_phi(reader, "BToKsEE_fit_l2_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk1_pt(reader, "BToKsEE_fit_trk1_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk1_eta(reader, "BToKsEE_fit_trk1_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk1_phi(reader, "BToKsEE_fit_trk1_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk2_pt(reader, "BToKsEE_fit_trk2_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk2_eta(reader, "BToKsEE_fit_trk2_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk2_phi(reader, "BToKsEE_fit_trk2_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_eta(reader, "BToKsEE_fit_kstar_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_mass(reader, "BToKsEE_fit_kstar_mass");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_phi(reader, "BToKsEE_fit_kstar_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_pt(reader, "BToKsEE_fit_kstar_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_cos2D(reader, "BToKsEE_fit_cos2D");
+		TTreeReaderArray<Float_t> BToKsEE_svprob(reader, "BToKsEE_svprob");
+		TTreeReaderArray<Float_t> BToKsEE_vtx_x(reader, "BToKsEE_vtx_x");
+		TTreeReaderArray<Float_t> BToKsEE_vtx_y(reader, "BToKsEE_vtx_y");
+		TTreeReaderArray<Float_t> BToKsEE_vtx_z(reader, "BToKsEE_vtx_z");
+		TTreeReaderArray<Float_t> BToKsEE_l_xy(reader, "BToKsEE_l_xy");
+		TTreeReaderArray<Float_t> BToKsEE_l_xy_unc(reader, "BToKsEE_l_xy_unc");
+    TTreeReaderArray<Float_t> BToKsEE_mll_raw(reader, "BToKsEE_mll_raw");
+		TTreeReaderArray<Float_t> BToKsEE_mll_charge(reader, "BToKsEE_mll_charge");
+		TTreeReaderArray<Float_t> BToKsEE_mll_fullfit(reader, "BToKsEE_mll_fullfit");
+    TTreeReaderArray<Int_t>   BToKsEE_l1_idx(reader, "BToKsEE_l1_idx");
+    TTreeReaderArray<Int_t>   BToKsEE_l2_idx(reader, "BToKsEE_l2_idx");
+		TTreeReaderArray<Int_t>   BToKsEE_trk1_idx(reader, "BToKsEE_trk1_idx");
+		TTreeReaderArray<Int_t>   BToKsEE_trk2_idx(reader, "BToKsEE_trk2_idx");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip2d(reader, "BToKsEE_trk1_svip2d");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip2d_err(reader, "BToKsEE_trk1_svip2d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip3d(reader, "BToKsEE_trk1_svip3d");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip3d_err(reader, "BToKsEE_trk1_svip3d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip2d(reader, "BToKsEE_trk2_svip2d");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip2d_err(reader, "BToKsEE_trk2_svip2d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip3d(reader, "BToKsEE_trk2_svip3d");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip3d_err(reader, "BToKsEE_trk2_svip3d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_iso04(reader, "BToKsEE_trk1_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_iso04(reader, "BToKsEE_trk2_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_l1_iso04(reader, "BToKsEE_l1_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_l2_iso04(reader, "BToKsEE_l2_iso04");
 		
 		TTreeReaderArray<Int_t>   Electron_charge(reader, "Electron_charge");
 		TTreeReaderArray<Float_t> Electron_pt(reader, "Electron_pt");
@@ -458,6 +517,24 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 						counter10++;
 						if(BToKEE_fit_cos2D[iB] < 0.9) continue;
 						counter11++;
+						
+						for(size_t iBKStaree = 0; iBKStaree < BToKsEE_mass.GetSize(); ++iBKStaree) {
+								if((BToKsEE_l1_idx[iBKStaree] == l1_index && BToKsEE_l2_idx[iBKStaree] == l2_index && BToKsEE_trk1_idx[iBKStaree] == k_index) ||
+									(BToKsEE_l1_idx[iBKStaree] == l1_index && BToKsEE_l2_idx[iBKStaree] == l2_index && BToKsEE_trk2_idx[iBKStaree] == k_index) ||
+									(BToKsEE_l1_idx[iBKStaree] == l2_index && BToKsEE_l2_idx[iBKStaree] == l1_index && BToKsEE_trk1_idx[iBKStaree] == k_index) ||
+									(BToKsEE_l1_idx[iBKStaree] == l2_index && BToKsEE_l2_idx[iBKStaree] == l1_index && BToKsEE_trk2_idx[iBKStaree] == k_index)) {
+										
+										// prepare eval dataset
+										float test[1][3] = {{1.0, 2.0, 3.0}};
+										float* dtest = reinterpret_cast<float*>(test);
+										XGDMatrixCreateFromMat(dtest, 1, 3, -1, &h_test);
+										
+									 }
+						}
+						
+						
+						XGBoosterCreate(NULL, 0, &booster_);
+						XGBoosterLoadModel(booster_, model_file.c_str());
 						
 
 						TLorentzVector Kp4, Bp4;

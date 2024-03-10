@@ -69,7 +69,7 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		
 		TTree* outputTree = new TTree("Events","Events");
 		
-		Float_t output_BCand_mass_fullfit;
+				Float_t output_BCand_mass_fullfit;
 		Float_t output_BCand_mll_fullfit_norm;
 		Float_t output_BCand_mll_fullfit;
 		Float_t output_BCand_fit_l1_pt_norm;
@@ -158,41 +158,53 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		
 		TTreeReaderValue<Int_t> nBToKEE(reader, "nBToKEE");
 		TTreeReaderValue<Int_t> nBToKsEE(reader, "nBToKsEE");
-		TTreeReaderArray<Float_t> BToKEE_mass(reader, "BToKEE_mass");
-		TTreeReaderArray<Float_t> BToKEE_fit_mass(reader, "BToKEE_fit_mass");
-		TTreeReaderArray<Float_t> BToKEE_fit_pt(reader, "BToKEE_fit_pt");
-		TTreeReaderArray<Float_t> BToKEE_fit_eta(reader, "BToKEE_fit_eta");
-		TTreeReaderArray<Float_t> BToKEE_fit_phi(reader, "BToKEE_fit_phi");
-		TTreeReaderArray<Float_t> BToKEE_fit_k_pt(reader, "BToKEE_fit_k_pt");
-		TTreeReaderArray<Float_t> BToKEE_fit_k_eta(reader, "BToKEE_fit_k_eta");
-		TTreeReaderArray<Float_t> BToKEE_fit_k_phi(reader, "BToKEE_fit_k_phi");
-		TTreeReaderArray<Float_t> BToKEE_fit_cos2D(reader, "BToKEE_fit_cos2D");
-		TTreeReaderArray<Float_t> BToKEE_svprob(reader, "BToKEE_svprob");
-		TTreeReaderArray<Float_t> BToKEE_vtx_x(reader, "BToKEE_vtx_x");
-		TTreeReaderArray<Float_t> BToKEE_vtx_y(reader, "BToKEE_vtx_y");
-		TTreeReaderArray<Float_t> BToKEE_vtx_z(reader, "BToKEE_vtx_z");
-		TTreeReaderArray<Float_t> BToKEE_l_xy(reader, "BToKEE_l_xy");
-		TTreeReaderArray<Float_t> BToKEE_l_xy_unc(reader, "BToKEE_l_xy_unc");
-    TTreeReaderArray<Float_t> BToKEE_mll_raw(reader, "BToKEE_mll_raw");
-		TTreeReaderArray<Float_t> BToKEE_mll_charge(reader, "BToKEE_mll_charge");
-		TTreeReaderArray<Float_t> BToKEE_mll_fullfit(reader, "BToKEE_mll_fullfit");
-		TTreeReaderArray<Float_t> BToKEE_fit_l1_pt(reader, "BToKEE_fit_l1_pt");
-		TTreeReaderArray<Float_t> BToKEE_fit_l1_eta(reader, "BToKEE_fit_l1_eta");
-		TTreeReaderArray<Float_t> BToKEE_fit_l1_phi(reader, "BToKEE_fit_l1_phi");
-		TTreeReaderArray<Float_t> BToKEE_fit_l2_pt(reader, "BToKEE_fit_l2_pt");
-		TTreeReaderArray<Float_t> BToKEE_fit_l2_eta(reader, "BToKEE_fit_l2_eta");
-		TTreeReaderArray<Float_t> BToKEE_fit_l2_phi(reader, "BToKEE_fit_l2_phi");
-    TTreeReaderArray<Int_t>   BToKEE_l1Idx(reader, "BToKEE_l1Idx");
-    TTreeReaderArray<Int_t>   BToKEE_l2Idx(reader, "BToKEE_l2Idx");
-		TTreeReaderArray<Int_t>   BToKEE_kIdx(reader, "BToKEE_kIdx");
-		TTreeReaderArray<Float_t> BToKEE_k_svip3d(reader, "BToKEE_k_svip3d");
-		TTreeReaderArray<Float_t> BToKEE_k_svip3d_err(reader, "BToKEE_k_svip3d_err");
-		// TTreeReaderArray<Float_t> BToKEE_k_iso04_dca(reader, "BToKEE_k_iso04_dca");
-		// TTreeReaderArray<Float_t> BToKEE_l1_iso04_dca(reader, "BToKEE_l1_iso04_dca");
-		// TTreeReaderArray<Float_t> BToKEE_l2_iso04_dca(reader, "BToKEE_l2_iso04_dca");
-		TTreeReaderArray<Float_t> BToKEE_l1_iso04(reader, "BToKEE_l1_iso04");
-		TTreeReaderArray<Float_t> BToKEE_l2_iso04(reader, "BToKEE_l2_iso04");
-		TTreeReaderArray<Float_t> BToKEE_k_iso04(reader, "BToKEE_k_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_mass(reader, "BToKsEE_mass");
+		TTreeReaderArray<Float_t> BToKsEE_fit_mass(reader, "BToKsEE_fit_mass");
+		TTreeReaderArray<Float_t> BToKsEE_fit_pt(reader, "BToKsEE_fit_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_eta(reader, "BToKsEE_fit_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_phi(reader, "BToKsEE_fit_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l1_pt(reader, "BToKsEE_fit_l1_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l1_eta(reader, "BToKsEE_fit_l1_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l1_phi(reader, "BToKsEE_fit_l1_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l2_pt(reader, "BToKsEE_fit_l2_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l2_eta(reader, "BToKsEE_fit_l2_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_l2_phi(reader, "BToKsEE_fit_l2_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk1_pt(reader, "BToKsEE_fit_trk1_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk1_eta(reader, "BToKsEE_fit_trk1_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk1_phi(reader, "BToKsEE_fit_trk1_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk2_pt(reader, "BToKsEE_fit_trk2_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk2_eta(reader, "BToKsEE_fit_trk2_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_trk2_phi(reader, "BToKsEE_fit_trk2_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_eta(reader, "BToKsEE_fit_kstar_eta");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_mass(reader, "BToKsEE_fit_kstar_mass");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_phi(reader, "BToKsEE_fit_kstar_phi");
+		TTreeReaderArray<Float_t> BToKsEE_fit_kstar_pt(reader, "BToKsEE_fit_kstar_pt");
+		TTreeReaderArray<Float_t> BToKsEE_fit_cos2D(reader, "BToKsEE_fit_cos2D");
+		TTreeReaderArray<Float_t> BToKsEE_svprob(reader, "BToKsEE_svprob");
+		TTreeReaderArray<Float_t> BToKsEE_vtx_x(reader, "BToKsEE_vtx_x");
+		TTreeReaderArray<Float_t> BToKsEE_vtx_y(reader, "BToKsEE_vtx_y");
+		TTreeReaderArray<Float_t> BToKsEE_vtx_z(reader, "BToKsEE_vtx_z");
+		TTreeReaderArray<Float_t> BToKsEE_l_xy(reader, "BToKsEE_l_xy");
+		TTreeReaderArray<Float_t> BToKsEE_l_xy_unc(reader, "BToKsEE_l_xy_unc");
+    TTreeReaderArray<Float_t> BToKsEE_mll_raw(reader, "BToKsEE_mll_raw");
+		TTreeReaderArray<Float_t> BToKsEE_mll_charge(reader, "BToKsEE_mll_charge");
+		TTreeReaderArray<Float_t> BToKsEE_mll_fullfit(reader, "BToKsEE_mll_fullfit");
+    TTreeReaderArray<Int_t>   BToKsEE_l1_idx(reader, "BToKsEE_l1_idx");
+    TTreeReaderArray<Int_t>   BToKsEE_l2_idx(reader, "BToKsEE_l2_idx");
+		TTreeReaderArray<Int_t>   BToKsEE_trk1_idx(reader, "BToKsEE_trk1_idx");
+		TTreeReaderArray<Int_t>   BToKsEE_trk2_idx(reader, "BToKsEE_trk2_idx");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip2d(reader, "BToKsEE_trk1_svip2d");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip2d_err(reader, "BToKsEE_trk1_svip2d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip3d(reader, "BToKsEE_trk1_svip3d");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_svip3d_err(reader, "BToKsEE_trk1_svip3d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip2d(reader, "BToKsEE_trk2_svip2d");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip2d_err(reader, "BToKsEE_trk2_svip2d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip3d(reader, "BToKsEE_trk2_svip3d");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_svip3d_err(reader, "BToKsEE_trk2_svip3d_err");
+		TTreeReaderArray<Float_t> BToKsEE_trk1_iso04(reader, "BToKsEE_trk1_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_trk2_iso04(reader, "BToKsEE_trk2_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_l1_iso04(reader, "BToKsEE_l1_iso04");
+		TTreeReaderArray<Float_t> BToKsEE_l2_iso04(reader, "BToKsEE_l2_iso04");
 		
 		TTreeReaderArray<Int_t>   Electron_charge(reader, "Electron_charge");
 		TTreeReaderArray<Float_t> Electron_pt(reader, "Electron_pt");
@@ -211,15 +223,6 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 		TTreeReaderArray<Float_t> PV_x(reader, "PV_x");
 		TTreeReaderArray<Float_t> PV_y(reader, "PV_y");
 		TTreeReaderArray<Float_t> PV_z(reader, "PV_z");
-		
-		TTreeReaderValue<Int_t> nGenPart(reader, "nGenPart");
-		TTreeReaderArray<Float_t> GenPart_pt(reader, "GenPart_pt");
-		TTreeReaderArray<Float_t> GenPart_eta(reader, "GenPart_eta");
-		TTreeReaderArray<Float_t> GenPart_phi(reader, "GenPart_phi");
-		TTreeReaderArray<Float_t> GenPart_mass(reader, "GenPart_mass");
-		TTreeReaderArray<Short_t> GenPart_genPartIdxMother(reader, "GenPart_genPartIdxMother");
-		TTreeReaderArray<Int_t> GenPart_pdgId(reader, "GenPart_pdgId");
-		TTreeReaderArray<Int_t> GenPart_status(reader, "GenPart_status");
 		
 		TTreeReaderValue<UChar_t> L1_DoubleEG11_er1p2_dR_Max0p6(reader, "L1_DoubleEG11_er1p2_dR_Max0p6");
 		TTreeReaderValue<UChar_t> L1_DoubleEG10p5_er1p2_dR_Max0p6(reader, "L1_DoubleEG10p5_er1p2_dR_Max0p6");
@@ -318,298 +321,190 @@ void FillHistogram(TH1F* hist1_1, TH1F* hist1_2, TH1F* hist1_3, TH1F* hist1_4, T
 				
 				hist2d_1_1->Fill((index_L1_highest+8)*0.5,(index_HLT_highest+8)*0.5,1);
 				
-				// Locate desired electron and Kaon
-				std::vector<TLorentzVector> genEle_p4s;
-				std::vector<int> genEle_idxs;
-				std::vector<TLorentzVector> genHad_p4s;
-				std::vector<int> genHad_idxs;
-				for(int igen = 0; igen < *nGenPart; igen++){
-						if(GenPart_status[igen] != 1) continue;
-						if(abs(GenPart_pdgId[igen]) != 11) continue;
-						TLorentzVector genp4;
-						if(abs(GenPart_pdgId[igen]) == 11 && (abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 443 || abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 521 - mode) && GenPart_pt[igen] > 2){
-								genEle_idxs.push_back(GenPart_genPartIdxMother[igen]);
-								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.000511);
-								genEle_p4s.push_back(genp4);
-						}
-				}
-				
-				if(genEle_p4s.size() < 2) continue;
-				int eleMomIdx = -99;
-				std::unordered_map<int, int> countMap;
-				for(int num : genEle_idxs) {countMap[num]++;}
-				for (const auto& pair : countMap) {
-						if (pair.second > 1) {
-								eleMomIdx = pair.first;
-						}
-				}
-				
-				auto it1 = genEle_p4s.begin();
-				auto it2 = genEle_idxs.begin();
-				while (it1 != genEle_p4s.end() && it2 != genEle_idxs.end()) {
-						if (*it2 != eleMomIdx) {
-								it1 = genEle_p4s.erase(it1);
-								it2 = genEle_idxs.erase(it2);
-						} else {
-								++it1;
-								++it2;
-						}
-				}
-				
-				for(int igen = 0; igen < *nGenPart; igen++){
-						// cout<<GenPart_pdgId[igen]<<" "<<GenPart_status[igen]<<" "<<GenPart_genPartIdxMother[igen]<<" "<<GenPart_pdgId[GenPart_genPartIdxMother[igen]]<<endl;
-						if(GenPart_status[igen] != 1) continue;
-						if(abs(GenPart_pdgId[igen]) != 11 && abs(GenPart_pdgId[igen]) != 321 && abs(GenPart_pdgId[igen]) != 211) continue;
-						TLorentzVector genp4;
-						if(GenPart_genPartIdxMother[igen] == eleMomIdx && abs(GenPart_pdgId[igen]) == 321 && mode == 0 && abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 521){
-								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.493677);
-								genHad_p4s.push_back(genp4);
-						}
-						if(GenPart_genPartIdxMother[GenPart_genPartIdxMother[igen]] == eleMomIdx && abs(GenPart_pdgId[igen]) == 321 && mode == 10 && abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 313 && abs(GenPart_pdgId[GenPart_genPartIdxMother[GenPart_genPartIdxMother[igen]]]) == 511){
-								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.493677);
-								genHad_p4s.push_back(genp4);
-						}
-						if(GenPart_genPartIdxMother[GenPart_genPartIdxMother[igen]] == eleMomIdx && abs(GenPart_pdgId[igen]) == 211 && mode == 10 && abs(GenPart_pdgId[GenPart_genPartIdxMother[igen]]) == 313 && abs(GenPart_pdgId[GenPart_genPartIdxMother[GenPart_genPartIdxMother[igen]]]) == 511){
-								genp4.SetPtEtaPhiM(GenPart_pt[igen],GenPart_eta[igen],GenPart_phi[igen],0.13957);
-								genHad_p4s.push_back(genp4);
-						}
-				}
-				
-				if(mode == 10 && (genEle_p4s.size() != 2 || genHad_p4s.size() != 2)) {
-					cout<<genEle_p4s.size()<<" "<<genHad_p4s.size()<<endl; 
-					continue;
-				}
-				if(mode == 0 && (genEle_p4s.size() != 2 || genHad_p4s.size() != 1)) {
-					cout<<genEle_p4s.size()<<" "<<genHad_p4s.size()<<endl; 
-					// for(int igen = 0; igen < *nGenPart; igen++){
-						// if(abs(GenPart_pdgId[igen]) != 11 && abs(GenPart_pdgId[igen]) != 321 && abs(GenPart_pdgId[igen]) != 211) continue;
-						// cout<<igen<<" "<<GenPart_pdgId[igen]<<" "<<GenPart_status[igen]<<" "<<GenPart_pt[igen]<<" "<<GenPart_eta[igen]<<" "<<GenPart_phi[igen]<<" "<<GenPart_genPartIdxMother[igen]<<" "<<GenPart_pdgId[GenPart_genPartIdxMother[igen]]<<endl;
-					// }
-					continue;
-				}
-				counter2++;
-				
-				for(size_t iB = 0; iB < BToKEE_mass.GetSize(); ++iB) {
+				for(size_t iB = 0; iB < BToKsEE_mass.GetSize(); ++iB) {
 					counter3++;
-					int l1_index = BToKEE_l1Idx[iB];
-					int l2_index = BToKEE_l2Idx[iB];
-					int k_index = BToKEE_kIdx[iB];
+					int l1_index = BToKsEE_l1_idx[iB];
+					int l2_index = BToKsEE_l2_idx[iB];
+					int trk1_index = BToKsEE_trk1_idx[iB];
+					int trk2_index = BToKsEE_trk2_idx[iB];
 					
-					// GEN matching
-					TLorentzVector l1p4, l2p4, kp4;
-					l1p4.SetPtEtaPhiM(Electron_pt[l1_index],Electron_eta[l1_index],Electron_phi[l1_index],0.000511);
-					l2p4.SetPtEtaPhiM(Electron_pt[l2_index],Electron_eta[l2_index],Electron_phi[l2_index],0.000511);
-					kp4.SetPtEtaPhiM(ProbeTracks_pt[k_index],ProbeTracks_eta[k_index],ProbeTracks_phi[k_index],0.493677);
-					int matchedStatus_ele = 0; // 0: 0 matched 1: 1 matched 2: 2 matched 
-					int matchedStatus_trk = 0; // 0: 0 matched 1: 1 matched 2: 2 matched 
-					std::vector<int> matchingbit_ele; 
-					std::vector<int> matchingbit_trk; 
-					for(int i=0; i<genEle_p4s.size();i++){
-						if(l1p4.DeltaR(genEle_p4s[i]) < 0.03) {
-							matchingbit_ele.push_back(1);
-						}
-						else{
-							matchingbit_ele.push_back(0);
-						}
-					}
-					for(int i=0; i<genEle_p4s.size();i++){
-						if(l2p4.DeltaR(genEle_p4s[i]) < 0.03) {
-							matchingbit_ele.push_back(1);
-						}
-						else{
-							matchingbit_ele.push_back(0);
-						}
-					}
-					if((matchingbit_ele[0] && matchingbit_ele[3]) || (matchingbit_ele[1] && matchingbit_ele[2])) matchedStatus_ele = 2;
-					if((matchingbit_ele[0] + matchingbit_ele[1]) == 0 || (matchingbit_ele[2] + matchingbit_ele[3]) == 0) matchedStatus_ele = 1;
-					if(matchingbit_ele[0] + matchingbit_ele[1] + matchingbit_ele[2] + matchingbit_ele[3] == 0) matchedStatus_ele = 0;
-									
-					for(int i=0; i<genHad_p4s.size();i++){
-						if(kp4.DeltaR(genHad_p4s[i]) < 0.03) {
-							matchingbit_trk.push_back(1);
-						}
-						else{
-							matchingbit_trk.push_back(0);
-						}
-					}
-					// if(matchingbit_trk[0]) matchedStatus_trk = 1; // in case of Kee
-					if(matchingbit_trk[0] || matchingbit_trk[1]) matchedStatus_trk = 1; // in case of K*ee
+					counter4++;
+					l1_index = BToKsEE_l1_idx[iB];
+					l2_index = BToKsEE_l2_idx[iB];
+					trk1_index = BToKsEE_trk1_idx[iB];
+					trk2_index = BToKsEE_trk2_idx[iB];
+					if(BToKsEE_mll_charge[iB] != 0) continue;
+					counter5++;
+					if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index]) continue;
+					counter6++;
+					if(BToKsEE_fit_mass[iB] < 4.7 || BToKsEE_fit_mass[iB] > 5.7) continue;
+					if(BToKsEE_fit_mass[iB] < 5.5 && BToKsEE_fit_mass[iB] > 5.0) continue;
+					counter7++;
+					if(BToKsEE_mll_fullfit[iB]*BToKsEE_mll_fullfit[iB] < 1.1 || BToKsEE_mll_fullfit[iB]*BToKsEE_mll_fullfit[iB] > 6.0) continue;	
+					counter8++;
+					if(Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) {continue;}
+					if(abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) {continue;}
+					counter9++;
+					if(ProbeTracks_pt[trk1_index] < 0.5 || ProbeTracks_pt[trk2_index] < 0.5) {continue;}
+					if(abs(ProbeTracks_eta[trk1_index]) > 1.22 || abs(ProbeTracks_eta[trk2_index]) > 1.22) {continue;}
+					counter10++;
+					if(BToKsEE_fit_cos2D[iB] < 0.9) continue;
+					counter11++;
 					
-					if(matchedStatus_ele == 2 && matchedStatus_trk == 1){ //class 1 or 3
-					// if(!(matchedStatus_ele == 2 && matchedStatus_trk == 1) && !(matchedStatus_ele == 0 && matchedStatus_trk == 0)){ //class 2
-					// if(matchedStatus_ele == 0 && matchedStatus_trk == 0){ //class 4
-						counter4++;
-						l1_index = BToKEE_l1Idx[iB];
-						l2_index = BToKEE_l2Idx[iB];
-						k_index = BToKEE_kIdx[iB];
-						if(BToKEE_mll_charge[iB] != 0) continue;
-						counter5++;
-						if(!Electron_isPF[l1_index] || !Electron_isPF[l2_index]) continue;
-						counter6++;
-						if(BToKEE_fit_mass[iB] < 4.7 || BToKEE_fit_mass[iB] > 5.7) continue;
-						counter7++;
-						if(BToKEE_mll_fullfit[iB]*BToKEE_mll_fullfit[iB] < 1.1 || BToKEE_mll_fullfit[iB]*BToKEE_mll_fullfit[iB] > 6.0) continue;
-						counter8++;
-						if(Electron_pt[l1_index] < 5 || Electron_pt[l2_index] < 5) continue;
-						if(abs(Electron_eta[l1_index]) > 1.22 || abs(Electron_eta[l2_index]) > 1.22) continue;
-						counter9++;
-						if(ProbeTracks_pt[k_index] < 0.5) continue;
-						if(abs(ProbeTracks_eta[k_index]) > 1.22) continue;
-						counter10++;
-						if(BToKEE_fit_cos2D[iB] < 0.9) continue;
-						counter11++;
-						
-
-						TLorentzVector Kp4, Bp4;
-						l1p4.SetPtEtaPhiM(BToKEE_fit_l1_pt[iB], BToKEE_fit_l1_eta[iB], BToKEE_fit_l1_phi[iB], 0.000511);
-						l2p4.SetPtEtaPhiM(BToKEE_fit_l2_pt[iB], BToKEE_fit_l2_eta[iB], BToKEE_fit_l2_phi[iB], 0.000511);
-						Kp4.SetPtEtaPhiM(BToKEE_fit_k_pt[iB], BToKEE_fit_k_eta[iB], BToKEE_fit_k_phi[iB], 0.493677);
-						Bp4.SetPtEtaPhiM(BToKEE_fit_pt[iB],BToKEE_fit_eta[iB],BToKEE_fit_phi[iB],BToKEE_fit_mass[iB]);
-						TLorentzVector llp4;
-						llp4 = l1p4 + l2p4;
-						ROOT::Math::XYZVector Bp3Vector(Bp4.Px(), Bp4.Py(), Bp4.Pz());
-						ROOT::Math::XYZVector llp3Vector(llp4.Px(),llp4.Py(),llp4.Pz());
-						ROOT::Math::XYZVector Kp3Vector(Kp4.Px(),Kp4.Py(),Kp4.Pz());
-						ROOT::Math::XYZVector BVtxVector(BToKEE_vtx_x[iB] - PV_x[0], BToKEE_vtx_y[iB] - PV_y[0], BToKEE_vtx_z[iB] - PV_z[0]);
-						ROOT::Math::XYZVector unitBVtxVector = BVtxVector / BVtxVector.R();
-						
-						output_BCand_mass_fullfit = BToKEE_fit_mass[iB];
-						hist1_1->Fill(output_BCand_mass_fullfit); 
-						
-						output_BCand_mll_fullfit = BToKEE_mll_fullfit[iB];
-						hist1_2->Fill(output_BCand_mll_fullfit);
-						
-						output_BCand_mll_fullfit_norm = BToKEE_mll_fullfit[iB] / BToKEE_fit_mass[iB];
-						hist1_3->Fill(output_BCand_mll_fullfit_norm);
-						
-						output_BCand_fit_l1_pt = BToKEE_fit_l1_pt[iB];
-						hist1_4->Fill(output_BCand_fit_l1_pt);
-						
-						output_BCand_fit_l2_pt = BToKEE_fit_l2_pt[iB];
-						hist1_5->Fill(output_BCand_fit_l2_pt);
-						
-						output_BCand_fit_l1_pt_norm = BToKEE_fit_l1_pt[iB] / BToKEE_fit_mass[iB];
-						hist1_6->Fill(output_BCand_fit_l1_pt_norm);
-						
-						output_BCand_fit_l2_pt_norm = BToKEE_fit_l2_pt[iB] / BToKEE_fit_mass[iB];
-						hist1_7->Fill(output_BCand_fit_l2_pt_norm); 
-						
-						output_BCand_fit_trk1_pt = BToKEE_fit_k_pt[iB];
-						hist1_8->Fill(output_BCand_fit_trk1_pt); 
-						
-						output_BCand_fit_trk2_pt = 0;
-						hist1_9->Fill(output_BCand_fit_trk2_pt); 
-						
-						output_BCand_fit_trk1_pt_norm = BToKEE_fit_k_pt[iB] / BToKEE_fit_mass[iB];
-						hist1_10->Fill(output_BCand_fit_trk1_pt_norm); 
-						
-						output_BCand_fit_trk2_pt_norm = 0;
-						hist1_11->Fill(output_BCand_fit_trk2_pt_norm); 
-						
-						output_BCand_fit_pt = BToKEE_fit_pt[iB];
-						hist1_12->Fill(output_BCand_fit_pt);
-						
-						output_BCand_fit_pt_norm = BToKEE_fit_pt[iB] / BToKEE_fit_mass[iB];
-						hist1_13->Fill(output_BCand_fit_pt_norm); 
-						
-						output_BCand_cosAlpha3D = BVtxVector.Dot(Bp3Vector) / (BVtxVector.R() * Bp3Vector.R());
-						hist1_14->Fill(output_BCand_cosAlpha3D); 
-						
-						output_BCand_svprob = BToKEE_svprob[iB];
-						hist1_15->Fill(output_BCand_svprob); 
-						
-						output_BCand_sigLxy = BToKEE_l_xy[iB] / BToKEE_l_xy_unc[iB];
-						hist1_16->Fill(output_BCand_sigLxy);
-						
-						output_BCand_fit_cos2D = BToKEE_fit_cos2D[iB];
-						hist1_17->Fill(output_BCand_fit_cos2D); 
-						
-						output_BCand_MomenAsym_lltrk1 = ((llp3Vector.Cross(unitBVtxVector)).R() - (Kp3Vector.Cross(unitBVtxVector)).R()) / ((llp3Vector.Cross(unitBVtxVector)).R() + (Kp3Vector.Cross(unitBVtxVector)).R());
-						hist1_18->Fill(output_BCand_MomenAsym_lltrk1);
-						
-						output_BCand_MomenAsym_lltrk2 = 1;
-						hist1_19->Fill(output_BCand_MomenAsym_lltrk2);
-						
-						output_BCand_MomenAsym_llKs = 1;
-						hist1_20->Fill(output_BCand_MomenAsym_llKs);
-						
-						output_BCand_sigImpact_lltrk1 = BToKEE_k_svip3d[iB]/BToKEE_k_svip3d_err[iB];
-						hist1_21->Fill(output_BCand_sigImpact_lltrk1); 
-						
-						output_BCand_sigImpact_lltrk2 = -1;
-						hist1_22->Fill(output_BCand_sigImpact_lltrk2);
-						
-						output_BCand_iso04_l1_norm = BToKEE_l1_iso04[iB] / BToKEE_fit_l1_pt[iB];
-						hist1_23->Fill(output_BCand_iso04_l1_norm);
-						
-						output_BCand_iso04_l2_norm = BToKEE_l2_iso04[iB] / BToKEE_fit_l2_pt[iB];
-						hist1_24->Fill(output_BCand_iso04_l2_norm); 
-						
-						output_BCand_iso04_trk1_norm = BToKEE_k_iso04[iB] / BToKEE_fit_k_pt[iB];
-						hist1_25->Fill(output_BCand_iso04_trk1_norm); 
-						
-						output_BCand_iso04_trk2_norm = -1;
-						hist1_26->Fill(output_BCand_iso04_trk2_norm); 
-						
-						output_BCand_dR_ll = l1p4.DeltaR(l2p4);
-						hist1_27->Fill(output_BCand_dR_ll);
-						
-						output_BCand_dR_l1trk1 = l1p4.DeltaR(Kp4);
-						hist1_28->Fill(output_BCand_dR_l1trk1);
-						
-						output_BCand_dR_l1trk2 = -1;
-						hist1_29->Fill(output_BCand_dR_l1trk2);
-						
-						output_BCand_dR_l2trk1 = l2p4.DeltaR(Kp4);
-						hist1_30->Fill(output_BCand_dR_l2trk1);
-						
-						output_BCand_dR_l2trk2 = -1;
-						hist1_31->Fill(output_BCand_dR_l2trk2);
-						
-						output_BCand_dR_trk1trk2 = -1;
-						hist1_32->Fill(output_BCand_dR_trk1trk2);
-						
-						output_BCand_dz_l1trk1 = Electron_vz[l1_index] - ProbeTracks_vz[k_index];
-						hist1_33->Fill(output_BCand_dz_l1trk1);
-						
-						output_BCand_dz_l1trk2 = -99;
-						hist1_34->Fill(output_BCand_dz_l1trk2);
-						
-						output_BCand_dz_l2trk1 = Electron_vz[l2_index] - ProbeTracks_vz[k_index];
-						hist1_35->Fill(output_BCand_dz_l2trk1);
-						
-						output_BCand_dz_l2trk2 = -99;
-						hist1_36->Fill(output_BCand_dz_l2trk2);
-						
-						output_BCand_dz_trk1trk2 = -99;
-						hist1_37->Fill(output_BCand_dz_trk1trk2);
-						
-						output_BCand_l1_ID = Electron_PFEleMvaID_RetrainedRawValue[l1_index];
-						hist1_38->Fill(output_BCand_l1_ID);
-						
-						output_BCand_l2_ID = Electron_PFEleMvaID_RetrainedRawValue[l2_index];
-						hist1_39->Fill(output_BCand_l2_ID);
-						
-						output_BCand_evt_nTri = *nBToKEE;
-					  hist1_40->Fill(output_BCand_evt_nTri);
-						
-						output_BCand_evt_nQuad = *nBToKsEE;
-						hist1_41->Fill(output_BCand_evt_nQuad);
-						
-						outputTree->Fill();
-					}
+					TLorentzVector l1p4, l2p4, trk1p4, trk2p4;
+					TLorentzVector Ksp4, Bp4;
+					l1p4.SetPtEtaPhiM(BToKsEE_fit_l1_pt[iB], BToKsEE_fit_l1_eta[iB], BToKsEE_fit_l1_phi[iB], 0.000511);
+					l2p4.SetPtEtaPhiM(BToKsEE_fit_l2_pt[iB], BToKsEE_fit_l2_eta[iB], BToKsEE_fit_l2_phi[iB], 0.000511);
+					trk1p4.SetPtEtaPhiM(BToKsEE_fit_trk1_pt[iB], BToKsEE_fit_trk1_eta[iB], BToKsEE_fit_trk1_phi[iB], 0.493677);
+					trk2p4.SetPtEtaPhiM(BToKsEE_fit_trk2_pt[iB], BToKsEE_fit_trk2_eta[iB], BToKsEE_fit_trk2_phi[iB], 0.493677);
+					Ksp4.SetPtEtaPhiM(BToKsEE_fit_kstar_pt[iB], BToKsEE_fit_kstar_eta[iB], BToKsEE_fit_kstar_phi[iB], BToKsEE_fit_kstar_mass[iB]);
+					Bp4.SetPtEtaPhiM(BToKsEE_fit_pt[iB],BToKsEE_fit_eta[iB],BToKsEE_fit_phi[iB],BToKsEE_fit_mass[iB]);
+					TLorentzVector llp4;
+					llp4 = l1p4 + l2p4;
+					ROOT::Math::XYZVector Bp3Vector(Bp4.Px(), Bp4.Py(), Bp4.Pz());
+					ROOT::Math::XYZVector llp3Vector(llp4.Px(),llp4.Py(),llp4.Pz());
+					ROOT::Math::XYZVector trk1p3Vector(trk1p4.Px(),trk1p4.Py(),trk1p4.Pz());
+					ROOT::Math::XYZVector trk2p3Vector(trk2p4.Px(),trk2p4.Py(),trk2p4.Pz());
+					ROOT::Math::XYZVector Ksp3Vector(Ksp4.Px(),Ksp4.Py(),Ksp4.Pz());
+					ROOT::Math::XYZVector BVtxVector(BToKsEE_vtx_x[iB] - PV_x[0], BToKsEE_vtx_y[iB] - PV_y[0], BToKsEE_vtx_z[iB] - PV_z[0]);
+					ROOT::Math::XYZVector unitBVtxVector = BVtxVector / BVtxVector.R();
+					
+					output_BCand_mass_fullfit = BToKsEE_fit_mass[iB];
+					hist1_1->Fill(output_BCand_mass_fullfit); 
+					
+					output_BCand_mll_fullfit = BToKsEE_mll_fullfit[iB];
+					hist1_2->Fill(output_BCand_mll_fullfit);
+					
+					output_BCand_mll_fullfit_norm = BToKsEE_mll_fullfit[iB] / BToKsEE_fit_mass[iB];
+					hist1_3->Fill(output_BCand_mll_fullfit_norm);
+					
+					output_BCand_fit_l1_pt = BToKsEE_fit_l1_pt[iB];
+					hist1_4->Fill(output_BCand_fit_l1_pt);
+					
+					output_BCand_fit_l2_pt = BToKsEE_fit_l2_pt[iB];
+					hist1_5->Fill(output_BCand_fit_l2_pt);
+					
+					output_BCand_fit_l1_pt_norm = BToKsEE_fit_l1_pt[iB] / BToKsEE_fit_mass[iB];
+					hist1_6->Fill(output_BCand_fit_l1_pt_norm);
+					
+					output_BCand_fit_l2_pt_norm = BToKsEE_fit_l2_pt[iB] / BToKsEE_fit_mass[iB];
+					hist1_7->Fill(output_BCand_fit_l2_pt_norm); 
+					
+					output_BCand_fit_trk1_pt = BToKsEE_fit_trk1_pt[iB];
+					hist1_8->Fill(output_BCand_fit_trk1_pt); 
+					
+					output_BCand_fit_trk2_pt = BToKsEE_fit_trk2_pt[iB];
+					hist1_9->Fill(output_BCand_fit_trk2_pt); 
+					
+					output_BCand_fit_trk1_pt_norm = BToKsEE_fit_trk1_pt[iB] / BToKsEE_fit_mass[iB];
+					hist1_10->Fill(output_BCand_fit_trk1_pt_norm); 
+					
+					output_BCand_fit_trk2_pt_norm = BToKsEE_fit_trk2_pt[iB] / BToKsEE_fit_mass[iB];
+					hist1_11->Fill(output_BCand_fit_trk2_pt_norm); 
+					
+					output_BCand_fit_pt = BToKsEE_fit_pt[iB];
+					hist1_12->Fill(output_BCand_fit_pt);
+					
+					output_BCand_fit_pt_norm = BToKsEE_fit_pt[iB] / BToKsEE_fit_mass[iB];
+					hist1_13->Fill(output_BCand_fit_pt_norm); 
+					
+					output_BCand_cosAlpha3D = BVtxVector.Dot(Bp3Vector) / (BVtxVector.R() * Bp3Vector.R());
+					hist1_14->Fill(output_BCand_cosAlpha3D); 
+					
+					output_BCand_svprob = BToKsEE_svprob[iB];
+					hist1_15->Fill(output_BCand_svprob); 
+					
+					output_BCand_sigLxy = BToKsEE_l_xy[iB] / BToKsEE_l_xy_unc[iB];
+					hist1_16->Fill(output_BCand_sigLxy);
+					
+					output_BCand_fit_cos2D = BToKsEE_fit_cos2D[iB];
+					hist1_17->Fill(output_BCand_fit_cos2D); 
+					
+					output_BCand_MomenAsym_lltrk1 = ((llp3Vector.Cross(unitBVtxVector)).R() - (trk1p3Vector.Cross(unitBVtxVector)).R()) / ((llp3Vector.Cross(unitBVtxVector)).R() + (trk1p3Vector.Cross(unitBVtxVector)).R());
+					hist1_18->Fill(output_BCand_MomenAsym_lltrk1);
+					
+					output_BCand_MomenAsym_lltrk2 = ((llp3Vector.Cross(unitBVtxVector)).R() - (trk2p3Vector.Cross(unitBVtxVector)).R()) / ((llp3Vector.Cross(unitBVtxVector)).R() + (trk2p3Vector.Cross(unitBVtxVector)).R());
+					hist1_19->Fill(output_BCand_MomenAsym_lltrk2);
+					
+					output_BCand_MomenAsym_llKs = ((llp3Vector.Cross(unitBVtxVector)).R() - (Ksp3Vector.Cross(unitBVtxVector)).R()) / ((llp3Vector.Cross(unitBVtxVector)).R() + (Ksp3Vector.Cross(unitBVtxVector)).R());
+					hist1_20->Fill(output_BCand_MomenAsym_llKs);
+					
+					output_BCand_sigImpact_lltrk1 = BToKsEE_trk1_svip3d[iB]/BToKsEE_trk1_svip3d_err[iB];
+					hist1_21->Fill(output_BCand_sigImpact_lltrk1); 
+					
+					output_BCand_sigImpact_lltrk2 = BToKsEE_trk2_svip3d[iB]/BToKsEE_trk2_svip3d_err[iB];
+					hist1_22->Fill(output_BCand_sigImpact_lltrk2);
+					
+					output_BCand_iso04_l1_norm = BToKsEE_l1_iso04[iB] / BToKsEE_fit_l1_pt[iB];
+					hist1_23->Fill(output_BCand_iso04_l1_norm);
+					
+					output_BCand_iso04_l2_norm = BToKsEE_l2_iso04[iB] / BToKsEE_fit_l2_pt[iB];
+					hist1_24->Fill(output_BCand_iso04_l2_norm); 
+					
+					output_BCand_iso04_trk1_norm = BToKsEE_trk1_iso04[iB] / BToKsEE_fit_trk1_pt[iB];
+					hist1_25->Fill(output_BCand_iso04_trk1_norm); 
+					
+					output_BCand_iso04_trk2_norm = BToKsEE_trk2_iso04[iB] / BToKsEE_fit_trk2_pt[iB];
+					hist1_26->Fill(output_BCand_iso04_trk2_norm); 
+					
+					output_BCand_dR_ll = l1p4.DeltaR(l2p4);
+					hist1_27->Fill(output_BCand_dR_ll);
+					
+					output_BCand_dR_l1trk1 = l1p4.DeltaR(trk1p4);
+					hist1_28->Fill(output_BCand_dR_l1trk1);
+					
+					output_BCand_dR_l1trk2 = l1p4.DeltaR(trk2p4);
+					hist1_29->Fill(output_BCand_dR_l1trk2);
+					
+					output_BCand_dR_l2trk1 = l2p4.DeltaR(trk1p4);
+					hist1_30->Fill(output_BCand_dR_l2trk1);
+					
+					output_BCand_dR_l2trk2 = l2p4.DeltaR(trk2p4);
+					hist1_31->Fill(output_BCand_dR_l2trk2);
+					
+					output_BCand_dR_trk1trk2 = trk1p4.DeltaR(trk2p4);
+					hist1_32->Fill(output_BCand_dR_trk1trk2);
+					
+					output_BCand_dz_l1trk1 = Electron_vz[l1_index] - ProbeTracks_vz[trk1_index];
+					hist1_33->Fill(output_BCand_dz_l1trk1);
+					
+					output_BCand_dz_l1trk2 = Electron_vz[l1_index] - ProbeTracks_vz[trk2_index];
+					hist1_34->Fill(output_BCand_dz_l1trk2);
+					
+					output_BCand_dz_l2trk1 = Electron_vz[l2_index] - ProbeTracks_vz[trk1_index];
+					hist1_35->Fill(output_BCand_dz_l2trk1);
+					
+					output_BCand_dz_l2trk2 = Electron_vz[l2_index] - ProbeTracks_vz[trk2_index];
+					hist1_36->Fill(output_BCand_dz_l2trk2);
+					
+					output_BCand_dz_trk1trk2 = ProbeTracks_vz[trk1_index] - ProbeTracks_vz[trk2_index];
+					hist1_37->Fill(output_BCand_dz_trk1trk2);
+					
+					output_BCand_l1_ID = Electron_PFEleMvaID_RetrainedRawValue[l1_index];
+					hist1_38->Fill(output_BCand_l1_ID);
+					
+					output_BCand_l2_ID = Electron_PFEleMvaID_RetrainedRawValue[l2_index];
+					hist1_39->Fill(output_BCand_l2_ID);
+					
+					output_BCand_evt_nTri = *nBToKEE;
+					hist1_40->Fill(output_BCand_evt_nTri);
+					
+					output_BCand_evt_nQuad = *nBToKsEE;
+					hist1_41->Fill(output_BCand_evt_nQuad);
+					
+					outputTree->Fill();
 				}
 		}//end event loop
 		
 		cout<<"counters: "<<counter1<<" "<<counter2<<" "<<counter3<<" "<<counter4<<" "<<counter5<<" "<<counter6<<" "<<counter7<<" "<<counter8<<" "<<counter9<<" "<<counter10<<" "<<counter11<<" "<<counter12<<endl;
+		cout<<"Tree check: "<<outputTree->GetEntries()<<endl;
 		outputFile->Write();
 		outputFile->Close();
 		// Close the file
     file->Close();
-		
 }
 
-void analyzer_MC_131_triplets(TString filename, int ifile, int mode) {
+void analyzer_Data_131_quadruplets(TString filename, int ifile, int mode) {
     // Create histograms to store muon pt values
     TH1F* hist1_1 = new TH1F("hist1_1", "B mass", 1000, 4.2, 6.2);
 		TH1F* hist1_2 = new TH1F("hist1_2", "ll mass", 1200, 0, 6);
@@ -652,7 +547,6 @@ void analyzer_MC_131_triplets(TString filename, int ifile, int mode) {
 		TH1F* hist1_39 = new TH1F("hist1_39", "l2 ID", 2000, -10,10);
 		TH1F* hist1_40 = new TH1F("hist1_40", "nTriplets", 100, 0,100);
 		TH1F* hist1_41 = new TH1F("hist1_41", "nQuadruplets", 30, 0,30);
-		
 		
 		TH2F* hist2d_1_1  = new TH2F("hist2d_1_1","Trigger map",15,3.75,11.25,13,3.75,10.25);
 

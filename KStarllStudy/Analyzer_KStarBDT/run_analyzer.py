@@ -288,16 +288,16 @@ if sys.argv[1] == "produce":
           
         os.mkdir(f"temp_{sample_name}_{index_number}")
         os.chdir(f"temp_{sample_name}_{index_number}")
-        if "BdToK0starEE" in sample_name:
+        if sample_name == "BuToKEE":
             print(sample_name)
             os.system("cp ../analyzer_MC_131_triplets.C ./")
             os.system("cp ../analyzer_MC_131_triplets.C ./")
-            os.system(r"nohup root -l -q -b analyzer_MC_131_triplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(10) + "\) &")
-            # print(r"nohup root -l -q -b analyzer_MC_131_triplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(0) + "\) &")
-        elif sample_name == "BuToKEE":
+            # os.system(r"nohup root -l -q -b analyzer_MC_131_triplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(0) + "\) &")
+            print(r"nohup root -l -q -b analyzer_MC_131_triplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(0) + "\) &")
+        elif "BdToK0starEE" in sample_name:
             os.system("cp ../analyzer_MC_131_quadruplets.C ./")
             # print(r"nohup root -l -q -b analyzer_MC_131_quadruplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(10) + "\) &")
-            os.system(r"nohup root -l -q -b analyzer_MC_131_quadruplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(0) + "\) &")
+            os.system(r"nohup root -l -q -b analyzer_MC_131_quadruplets.C\(\"" + file + r"\"," + str(int(index_number)) + "," + str(10) + "\) &")
         elif "DataF" in sample_name and "tri" in sys.argv[2]: 
             print("Data")
             os.system("cp ../analyzer_Data_131_triplets.C ./")
